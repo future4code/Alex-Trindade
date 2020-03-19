@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+}
+
+#menu-superior, ul, li {
+    display: inline;
+}
+
+.sociais {
+    margin: 10px;
+    width: 30px;
+    height: 30px;
+    border: none;
+}
+
+#menu-menor {
+    margin-left: 67vw;
+}
+
+#menu-menor li a{
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 700;
+    color: gray;
+    padding: 5px;
+}
+
+#cabecalho {
+    width: auto;
+    height: 9vw;
+}
+
+#txtbusca {
+    border: solid 1px gray;
+    background-color: #f2f2f2;
+    font-size: 13px;
+    padding: 5px;
+    height: 22px;
+    width: 191px;
+}
+
+#btnpesquisa {
+    border: solid 1px gray;
+    height: 22px;
+}

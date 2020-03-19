@@ -4,31 +4,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
     <title>FunnyCat - Página Inicial</title>
 </head>
 
 <body>
-    <h1>FunnyCat Store</h1>
-    <ul>
-        <li>
-            <a href="index.html">Página Inicial</a>
-        </li>
-        <li>
-            <a href="controle-de-estoque.html">Controle de Estoque</a>
-        </li>
-        <li>
-            <a href="adicionar-produto.html">Adicionar Produto</a>
-        </li>
-        <li>
-            <a href="funcionarios.html">Funcionários</a>
-        </li>
-    </ul>
-    <p>
-        Olá humano, bem vindo a FunnyCat Store!<br><br>Nós sabemos do que os gatos gostam,
-        o que querem e reconhecemos que eles são cheios de manias. Por isso, os produtos
-        vendidos pela nossa loja são exclusivo para gatos, pensando nas características
-        como as unhas, pêlos e conforto dos gatos.
-    </p>
+    <div id="menu-superior">
+        <button type="submit" class="sociais">
+            <a href="http://www.facebook.com">
+                <img src="imagens/icone-facebook.png" alt="ícone facebook">
+            </a>
+        </button>
+        <button type="submit" class="sociais">
+            <a href="http://www.youtube.com">
+                <img src="imagens/icone-youtube.png" alt="ícone youtube">
+            </a>
+        </button>
+        <button type="submit" class="sociais">
+            <a href="http://www.instagram.com">
+                <img src="imagens/icone-instagram.png" alt="ícone instagram">
+            </a>
+        </button>
+
+        <ul id="menu-menor">
+            <li><a href="#">Favoritos</a></li>
+            <li><a href="#">Rastreie seu Pedido</a></li>
+        </ul>
+    </div>
+    <hr>
+    <div id="cabecalho">
+        <input type="text" id="txtbusca" placeholder="Digite o que você procura">
+        <button id="btnpesquisa">Pesquisar</button>
+        <img id="logo" src="imagens/FunnyCat.png" alt="logo da loja">
+    </div>
+    
+    <div id="menu-principal">
+        <ul>
+            <li>
+                <a href="index.html">Página Inicial</a>
+            </li>
+            <li>
+                <a href="controle-de-estoque.html">Controle de Estoque</a>
+            </li>
+            <li>
+                <a href="adicionar-produto.html">Adicionar Produto</a>
+            </li>
+            <li>
+                <a href="funcionarios.html">Funcionários</a>
+            </li>
+        </ul>
+    </div>
+    <div id="conteudo">
+        <ul class="slider">
+            <li><img src="imagens/Banner1.png"></li>
+            <li><img src="imagens/Banner2.jpg"></li>
+            <li><img src="imagens/Banner3.jpg"></li>
+        </ul>
+        <p>
+            Olá humano, bem vindo a FunnyCat Store!<br><br>Nós sabemos do que os gatos gostam,
+            o que querem e reconhecemos que eles são cheios de manias. Por isso, os produtos
+            vendidos pela nossa loja são exclusivo para gatos, pensando nas características
+            como as unhas, pêlos e conforto dos gatos.
+        </p>
+    </div>
+    <div id="rodape">
+        <form>
+            <label for="email">Receba as Nossas Novidades</label>
+            <input type="text" name="email" id="email">
+            <button type="submit" id="btnemail">ENVIAR</button>
+        </form>
+    </div>
 </body>
 
 </html>
