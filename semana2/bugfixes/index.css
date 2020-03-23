@@ -19,7 +19,7 @@ h2 {
 
 input {
     height: 20px;
-    width: 500px;
+    width: 450px;
     border: none;
     border-bottom: 2px solid gray;
 }
@@ -124,7 +124,8 @@ div:last-child {
 }
 
 table {
-    width: 60%;
+    width: 50%;
+    margin: auto;
 }
 
 td {
