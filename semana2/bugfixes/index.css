@@ -28,6 +28,10 @@ button:focus {
     color: white;
 }
 
+input, button {
+    outline: none;
+}
+
 img {
     width: 30px;
 }
@@ -81,21 +85,21 @@ a {
 #container-de-descricao>ol {
     padding: 15px 0px;
     position: absolute;
-    top: 120px;
-    left: 592.133px;
+    top: 140px;
+    left: 579.9025px;
 }
 
 #container-de-descricao>p {
     position: absolute;
     top: 60px;
-    right: 588px;
-    width: 190px;
+    right: 583px;
+    width: 200px;
 }
 
 h3 {
     position: absolute;
-    top: 190px;
-    left: 572.03px;
+    top: 210px;
+    left: 560.015px;
 }
 
 #container-para-comprar {
@@ -105,7 +109,7 @@ h3 {
 #container-para-comprar>p {
     position: absolute;
     top: 35px;
-    right: 417.9295px;
+    right: 430.2695px;
     color: #c44f00;
     padding: 100px 0;
     font-size: 60px;
@@ -132,8 +136,12 @@ td {
     text-align: center;
 }
 
-div img{
+div img {
     width: 20px;
+}
+
+div img:hover {
+    opacity: 0.5;
 }
 
 td button {
@@ -166,6 +174,8 @@ td>img {
     border-radius: 5px;
     font-size: 10px;
     color: black;
+    display: block;
+    margin: 150px auto;
 }
 
 #back-button:hover {
