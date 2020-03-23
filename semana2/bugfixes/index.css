@@ -31,9 +31,6 @@ img {
 
 div>p:first-child {
     display: inline;
-    position: absolute;
-    top: 35px;
-    right: 417.9295px;
 }
 
 div img {
@@ -84,6 +81,22 @@ a {
 
 #container-de-descricao>ol {
     padding: 15px 0px;
+    position: absolute;
+    top: 120px;
+    left: 592.133px;
+}
+
+#container-de-descricao>p {
+    position: absolute;
+    top: 60px;
+    right: 588px;
+    width: 190px;
+}
+
+h3 {
+    position: absolute;
+    top: 190px;
+    left: 572.03px;
 }
 
 #container-para-comprar {
@@ -91,6 +104,9 @@ a {
 }
 
 #container-para-comprar>p {
+    position: absolute;
+    top: 35px;
+    right: 417.9295px;
     color: #c44f00;
     padding: 100px 0;
     font-size: 60px;
