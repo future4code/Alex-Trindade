@@ -26,15 +26,11 @@ button:focus {
 }
 
 img {
-    width: 100px;
+    width: 30px;
 }
 
 div>p:first-child {
     display: inline;
-}
-
-div img {
-    background: black;
 }
 
 .botao-amarelo {
@@ -138,6 +134,10 @@ td button {
     height: 30px;
     border-radius: 5px;
     color: black;
+}
+
+td>img {
+    width: 40px;
 }
 
 .container-do-search {
