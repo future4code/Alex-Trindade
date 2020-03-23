@@ -31,6 +31,9 @@ img {
 
 div>p:first-child {
     display: inline;
+    position: absolute;
+    top: 35px;
+    right: 417.9295px;
 }
 
 div img {
@@ -44,9 +47,9 @@ div img {
     border-radius: 5px;
     font-size: 20px;
     color: white;
-    display: block;
-    margin: 0 auto;
-    margin-top: 50px;
+    position: absolute;
+    top: 300px;
+    right: 558px;
 }
 
 a {
@@ -58,6 +61,7 @@ a {
 }
 
 .container {
+    position: relative;
     height: 500px;
     text-align: center;
 }
