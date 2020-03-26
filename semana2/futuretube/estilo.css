@@ -11,16 +11,19 @@
 header {
     width: 100vw;
     height: 13vh;
-    background-color: royalblue;
+    background-color: teal;
 }
 
-header span {
+header a {
+    text-decoration: none;
     font-weight: bold;
     font-size: 2em;
     color: white;
+    float: left;
+    margin: 1vw;
 }
 
-header input {
+#pesquisa {
     font-size: 1.1em;
     float: right;
     width: 15vw;
@@ -28,22 +31,63 @@ header input {
     margin: 1vw;
 }
 
+footer {
+    width: 100vw;
+    height: 13vh;
+    text-align: center;
+    background-color: orangered;
+}
+
+footer span {
+    font-size: 3em;
+}
+
 /*INDEX*/
 
 #container {
+    margin: 2vw;
     width: 92vw;
-    height: 1000px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    gap: 1vw;  
-    text-align: center;
-    align-items: center;
-    justify-content: center;  
+    gap: 1vw;
+}
+
+img {
+    width: 23vw;
+    height: 15vw;
 }
 
 .video {
-    width: 250px;
-    height: 250px;
-    border: 1px green solid;
+    border: 1px solid green;
+    text-align: center;
+}
+
+.video a {
+    text-decoration: none;
+    color: black;
+}
+
+/*VIDEOS*/
+
+#video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+    margin: 1vw;
+}
+
+video {
+    width: 90vw;
+    height: 70vh;
+}
+
+#voltar a {
+    text-decoration: none;
+    font-size: 1.3em;
+    color: black;
+    margin-left: 5vw;
 }
