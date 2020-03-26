@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*GERAL*/
+
+header {
+    width: 100vw;
+    height: 13vh;
+    background-color: royalblue;
+}
+
+header span {
+    font-weight: bold;
+    font-size: 2em;
+    color: white;
+}
+
+header input {
+    font-size: 1.1em;
+    float: right;
+    width: 15vw;
+    height: 3vw;
+    margin: 1vw;
+}
+
+/*INDEX*/
+
+#container {
+    width: 92vw;
+    height: 1000px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1vw;  
+    text-align: center;
+    align-items: center;
+    justify-content: center;  
+}
+
+.video {
+    width: 250px;
+    height: 250px;
+    border: 1px green solid;
+}
