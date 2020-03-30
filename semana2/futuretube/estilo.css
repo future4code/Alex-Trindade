@@ -1,0 +1,93 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*GERAL*/
+
+header {
+    width: 100vw;
+    height: 13vh;
+    background-color: teal;
+}
+
+header a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 2em;
+    color: white;
+    float: left;
+    margin: 1vw;
+}
+
+#pesquisa {
+    font-size: 1.1em;
+    float: right;
+    width: 15vw;
+    height: 3vw;
+    margin: 1vw;
+}
+
+footer {
+    width: 100vw;
+    height: 13vh;
+    text-align: center;
+    background-color: orangered;
+}
+
+footer span {
+    font-size: 3em;
+}
+
+/*INDEX*/
+
+#container {
+    margin: 2vw;
+    width: 92vw;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1vw;
+}
+
+img {
+    width: 23vw;
+    height: 15vw;
+}
+
+.video {
+    border: 1px solid green;
+    text-align: center;
+}
+
+.video a {
+    text-decoration: none;
+    color: black;
+}
+
+/*VIDEOS*/
+
+#video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+    margin: 1vw;
+}
+
+video {
+    width: 90vw;
+    height: 70vh;
+}
+
+#voltar a {
+    text-decoration: none;
+    font-size: 1.3em;
+    color: black;
+    margin-left: 5vw;
+}
