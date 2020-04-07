@@ -39,3 +39,22 @@ main > div {
     padding: 1vw;
 }
 
+@media screen and (max-device-width: 420px) {
+    header {
+        height: 20vh;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    header > *{
+        margin: 0;
+        width: 30vw;
+        height: 4vh;
+        text-align: center;
+    }
+
+    main > div {
+        width: 80vw;
+        height: 70vh;
+    }
+}
