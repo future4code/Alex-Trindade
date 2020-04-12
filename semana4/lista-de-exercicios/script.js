@@ -93,3 +93,44 @@ function tipoTriangulo (a, b, c) {
 tipoTriangulo (a = Number(prompt("Digite o primeiro lado ('A') do triângulo: ")),
 b = Number(prompt("Digite o segundo lado ('B') do triângulo: ")),
 c = Number(prompt("Digite o terceiro lado ('C') do triângulo: ")))
+
+/* Exercícios de lógica de programação
+   Exercício 4
+*/
+
+let numero1 = Number(prompt("Digite um número: "))
+let numero2 = Number (prompt("Digite mais um número: "))
+let maiorNumero = 0
+let menorNumero = 0
+
+if (numero1 > numero2) {
+    maiorNumero = numero1
+    menorNumero = numero2
+} else {
+    maiorNumero = numero2
+    menorNumero = numero1
+}
+
+console.log ("O maior número digitado é " + maiorNumero)
+
+if (numero1 != maiorNumero) {
+    console.log (" O número " + numero1 + " não é divisível pelo número " + numero2)
+} else {
+    if (numero1 % numero2 === 0) {
+        console.log (" O número " + numero1 + " é divisível pelo número " + numero2)
+    } else {
+        console.log (" O número " + numero1 + " não é divisível pelo número " + numero2)
+    }
+}
+
+if (numero2 != maiorNumero) {
+    console.log (" O número " + numero2 + " não é divisível pelo número " + numero1)
+} else {
+    if (numero2 % numero1 === 0) {
+        console.log (" O número " + numero2 + " é divisível pelo número " + numero1)
+    } else {
+        console.log (" O número " + numero2 + " não é divisível pelo número " + numero1)
+    }
+}
+
+console.log ("A diferença entre eles é " + (maiorNumero - menorNumero))
