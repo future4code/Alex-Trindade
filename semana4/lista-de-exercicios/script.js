@@ -17,5 +17,13 @@
     através do for, ele verifica se o número é par ou ímpar. Se o número for par, ele adiciona
     o número ao array1, senão, ele adiciona o número ao array2. A função console.log irá exibir
     a quantidade total de números (os números presentes no vetor 'numeros'), os números pares
-    contidos no 'array1' e os números ímpares contidos no 'array2'    
+    contidos no 'array1' e os números ímpares contidos no 'array2' 
+    
+    4. Aqui foi declarado um vetor de números e duas variáveis: numero1 com valor infinito e 
+    numero dois com valor 0. Os elementos do vetor são percorridos através de um laço for, onde
+    tem duas verificações. A primeira verifica se o elemento é menor que o conteúdo da variável
+    numero1. Se for, numero1 recebe o valor do elemento do vetor. A segunda verificação é se o 
+    elemento é maior que o numero2. Se iso for verdadeiro, numero2 recebe o valor do elemento. A
+    função console.log (numero1) irá exibir o numero1, que é -10, que é o menor número do vetor. 
+    A função console.log (numero2) irá exibir o numero2, que é 1590, o maior número do vetor.
 */
