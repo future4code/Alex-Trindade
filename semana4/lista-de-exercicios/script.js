@@ -71,3 +71,25 @@ while (i < quantidadePares*2) {
 }
 
 console.log (pares)
+
+/* Exercícios de lógica de programação
+   Exercício 3
+*/
+
+function tipoTriangulo (a, b, c) {
+    if (a === b && a === c && b === c) {
+        return console.log ("Triângulo equilátero.")
+    }
+    
+    if (a === b || a == c || b === c) {
+        return console.log ("Triângulo isóceles.")
+    } 
+    
+    if (a !== b && a !== c && b !== c) {
+        return console.log ("Triângulo escaleno.")
+    }
+}
+
+tipoTriangulo (a = Number(prompt("Digite o primeiro lado ('A') do triângulo: ")),
+b = Number(prompt("Digite o segundo lado ('B') do triângulo: ")),
+c = Number(prompt("Digite o terceiro lado ('C') do triângulo: ")))
