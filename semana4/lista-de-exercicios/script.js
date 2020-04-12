@@ -50,3 +50,24 @@ booleano1 && booleano2 && !booleano4 //False
 
 //e
 !(booleano1) && !(booleano3) || (!booleano4 && booleano3 && booleano3) //True
+
+/* Exercícios de lógica de programação
+   Exercício 2
+*/
+
+/* O código iniciado pelo meu colega não daria certo pois entra em um loop infinito, pois ele 
+não colocou a condição de saída do loop e o console log exibiria apenas o zero, se tudo estivesse
+funcionando, porque qualquer número multiplicado por zero é zero.*/
+
+let quantidadePares = Number(prompt("Digite a quantidade de pares que deseja ver: "))
+let i = 0
+let pares = ""
+
+while (i < quantidadePares*2) {
+    if (i % 2 === 0) {
+        pares += i + " "
+    }
+    i++
+}
+
+console.log (pares)
