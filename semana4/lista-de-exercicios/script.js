@@ -12,4 +12,10 @@
     (150*1.1) que é igual a 165 e também aparecerá o segundoMontante no valor de 200, que 
     seria investido no tesouro direto mas como essa opção não existe, será exibida a mensagem
     default: TIPO DE INVESTIMENTO INFORMADO INCORRETO!
+
+    3. Nesta função foi declarado um vetor de números e ao percorrer todos os seus elementos
+    através do for, ele verifica se o número é par ou ímpar. Se o número for par, ele adiciona
+    o número ao array1, senão, ele adiciona o número ao array2. A função console.log irá exibir
+    a quantidade total de números (os números presentes no vetor 'numeros'), os números pares
+    contidos no 'array1' e os números ímpares contidos no 'array2'    
 */
