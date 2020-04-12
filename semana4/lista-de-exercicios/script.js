@@ -34,16 +34,16 @@
 const booleano1 = true
 const booleano2 = false
 const booleano3 = !booleano2
-const booleano4 = !booleano3 
+const booleano4 = !booleano3
 
 //a
 booleano1 && booleano2 && !booleano4 //False
 
-//b
-(booleano1 && booleano2) || !booleano3 //False
+    //b
+    (booleano1 && booleano2) || !booleano3 //False
 
-//c
-(booleano2 || booleano3) && (booleano4 || booleano1) //True
+        //c
+        (booleano2 || booleano3) && (booleano4 || booleano1) //True
 
 //d
 !(booleano2 && booleano3) || !(booleano1 && booleano3) //True
@@ -63,43 +63,43 @@ let quantidadePares = Number(prompt("Digite a quantidade de pares que deseja ver
 let i = 0
 let pares = ""
 
-while (i < quantidadePares*2) {
+while (i < quantidadePares * 2) {
     if (i % 2 === 0) {
         pares += i + " "
     }
     i++
 }
 
-console.log (pares)
+console.log(pares)
 
 /* Exercícios de lógica de programação
    Exercício 3
 */
 
-function tipoTriangulo (a, b, c) {
+function tipoTriangulo(a, b, c) {
     if (a === b && a === c && b === c) {
-        return console.log ("Triângulo equilátero.")
+        return console.log("Triângulo equilátero.")
     }
-    
+
     if (a === b || a == c || b === c) {
-        return console.log ("Triângulo isóceles.")
-    } 
-    
+        return console.log("Triângulo isóceles.")
+    }
+
     if (a !== b && a !== c && b !== c) {
-        return console.log ("Triângulo escaleno.")
+        return console.log("Triângulo escaleno.")
     }
 }
 
-tipoTriangulo (a = Number(prompt("Digite o primeiro lado ('A') do triângulo: ")),
-b = Number(prompt("Digite o segundo lado ('B') do triângulo: ")),
-c = Number(prompt("Digite o terceiro lado ('C') do triângulo: ")))
+tipoTriangulo(a = Number(prompt("Digite o primeiro lado ('A') do triângulo: ")),
+    b = Number(prompt("Digite o segundo lado ('B') do triângulo: ")),
+    c = Number(prompt("Digite o terceiro lado ('C') do triângulo: ")))
 
 /* Exercícios de lógica de programação
    Exercício 4
 */
 
 let numero1 = Number(prompt("Digite um número: "))
-let numero2 = Number (prompt("Digite mais um número: "))
+let numero2 = Number(prompt("Digite mais um número: "))
 let maiorNumero = 0
 let menorNumero = 0
 
@@ -111,26 +111,59 @@ if (numero1 > numero2) {
     menorNumero = numero1
 }
 
-console.log ("O maior número digitado é " + maiorNumero)
+console.log("O maior número digitado é " + maiorNumero)
 
 if (numero1 != maiorNumero) {
-    console.log (" O número " + numero1 + " não é divisível pelo número " + numero2)
+    console.log(" O número " + numero1 + " não é divisível pelo número " + numero2)
 } else {
     if (numero1 % numero2 === 0) {
-        console.log (" O número " + numero1 + " é divisível pelo número " + numero2)
+        console.log(" O número " + numero1 + " é divisível pelo número " + numero2)
     } else {
-        console.log (" O número " + numero1 + " não é divisível pelo número " + numero2)
+        console.log(" O número " + numero1 + " não é divisível pelo número " + numero2)
     }
 }
 
 if (numero2 != maiorNumero) {
-    console.log (" O número " + numero2 + " não é divisível pelo número " + numero1)
+    console.log(" O número " + numero2 + " não é divisível pelo número " + numero1)
 } else {
     if (numero2 % numero1 === 0) {
-        console.log (" O número " + numero2 + " é divisível pelo número " + numero1)
+        console.log(" O número " + numero2 + " é divisível pelo número " + numero1)
     } else {
-        console.log (" O número " + numero2 + " não é divisível pelo número " + numero1)
+        console.log(" O número " + numero2 + " não é divisível pelo número " + numero1)
     }
 }
 
-console.log ("A diferença entre eles é " + (maiorNumero - menorNumero))
+console.log("A diferença entre eles é " + (maiorNumero - menorNumero))
+
+/* Exercícios de funções
+   Exercício 1 */
+
+function segundoMaiorESegundoMenorNumero(vetorNumeros) {
+    let maior = vetorNumeros[0]
+    let menor = vetorNumeros[0]
+    let segundoMaior = vetorNumeros[0]
+    let segundoMenor = vetorNumeros[0]
+
+    for (let index = 0; index < vetorNumeros.length; index++) {
+        if (vetorNumeros[index] > maior) {
+            maior = vetorNumeros[index]
+        } 
+        
+        if (vetorNumeros[index] < menor) {
+            menor = vetorNumeros[index]
+        }
+    }
+
+    for (let i = 0; i < vetorNumeros.length; i++) {
+        if (vetorNumeros[i] > segundoMaior && vetorNumeros [i] < maior) {
+            segundoMaior = vetorNumeros[i]
+        } 
+        
+        if (vetorNumeros[i] < segundoMenor && vetorNumeros[i] > menor) {
+            segundoMenor = vetorNumeros[i]
+        }
+    }
+    return console.log ("O segundo menor número é " + segundoMenor + "\nO segundo maior número é " + segundoMaior)
+}
+
+segundoMaiorESegundoMenorNumero ([80, 30, 130, 40, 60, 21, 70, 120, 90, 103, 110, 55])
