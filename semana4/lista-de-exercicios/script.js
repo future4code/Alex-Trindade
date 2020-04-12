@@ -27,3 +27,26 @@
     função console.log (numero1) irá exibir o numero1, que é -10, que é o menor número do vetor. 
     A função console.log (numero2) irá exibir o numero2, que é 1590, o maior número do vetor.
 */
+
+/* Exercícios de lógica de programação
+   Exercício 1
+*/
+const booleano1 = true
+const booleano2 = false
+const booleano3 = !booleano2
+const booleano4 = !booleano3 
+
+//a
+booleano1 && booleano2 && !booleano4 //False
+
+//b
+(booleano1 && booleano2) || !booleano3 //False
+
+//c
+(booleano2 || booleano3) && (booleano4 || booleano1) //True
+
+//d
+!(booleano2 && booleano3) || !(booleano1 && booleano3) //True
+
+//e
+!(booleano1) && !(booleano3) || (!booleano4 && booleano3 && booleano3) //True
