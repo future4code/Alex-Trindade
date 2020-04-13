@@ -269,3 +269,28 @@ anonimizarPessoa()
        console.log (numeros)
    }
 */
+
+/*Exercícios de funções de array
+   Exercício 2 a */ 
+
+const pessoas = [
+	{ nome: "Pedro", idade: 20 },
+	{ nome: "João", idade: 10 },
+	{ nome: "Paula", idade: 12 },
+	{ nome: "Artur", idade: 89 } 
+]
+
+for (let index = 0; index < pessoas.length; index++) {
+    console.log ("Nome: " + pessoas[index].nome + " idade: " + pessoas[index].idade)
+}
+
+const adultos = pessoas.map ((pessoa, index, array) => {
+    if (pessoa.idade >= 20) {
+        return {
+            nome: pessoa.nome,
+            idade: pessoa.idade
+        }
+    }
+})
+
+    console.log (adultos)
