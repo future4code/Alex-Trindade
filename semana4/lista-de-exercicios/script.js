@@ -271,7 +271,7 @@ anonimizarPessoa()
 */
 
 /*Exercícios de funções de array
-   Exercício 2 a */ 
+   Exercício 2 a e b */ 
 
 const pessoas = [
 	{ nome: "Pedro", idade: 20 },
@@ -280,17 +280,14 @@ const pessoas = [
 	{ nome: "Artur", idade: 89 } 
 ]
 
-for (let index = 0; index < pessoas.length; index++) {
-    console.log ("Nome: " + pessoas[index].nome + " idade: " + pessoas[index].idade)
-}
-
-const adultos = pessoas.map ((pessoa, index, array) => {
+const adultos = pessoas.filter ((pessoa, index, array) => {
     if (pessoa.idade >= 20) {
-        return {
-            nome: pessoa.nome,
-            idade: pessoa.idade
-        }
+        return console.log ("Nome: " + pessoa.nome + " idade: " + pessoa.idade + "\n")
     }
 })
 
-    console.log (adultos)
+const menoresDeIdade = pessoas.filter ((pessoa, index, array) => {
+    if (pessoa.idade < 20) {
+        return console.log ("Nome: " + pessoa.nome + " idade: " + pessoa.idade + "\n")
+    }
+})
