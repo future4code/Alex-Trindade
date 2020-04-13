@@ -252,8 +252,8 @@ function anonimizarPessoa() {
         nome: 'ANÔNIMO'
     }
 
-    return console.log("Nome: " + novaPessoa.nome + "\n" + "Idade: " + novaPessoa.idade + "\n" + 
-    "E-mail: " + novaPessoa.email + "\n" + "Endereço: " + novaPessoa.endereco)
+    return console.log("Nome: " + novaPessoa.nome + "\n" + "Idade: " + novaPessoa.idade + "\n" +
+        "E-mail: " + novaPessoa.email + "\n" + "Endereço: " + novaPessoa.endereco)
 }
 
 anonimizarPessoa()
@@ -271,47 +271,47 @@ anonimizarPessoa()
 */
 
 /*Exercícios de funções de array
-   Exercício 2 a e b */ 
+   Exercício 2 a e b */
 
 const pessoas = [
-	{ nome: "Pedro", idade: 20 },
-	{ nome: "João", idade: 10 },
-	{ nome: "Paula", idade: 12 },
-	{ nome: "Artur", idade: 89 } 
+    { nome: "Pedro", idade: 20 },
+    { nome: "João", idade: 10 },
+    { nome: "Paula", idade: 12 },
+    { nome: "Artur", idade: 89 }
 ]
 
-const adultos = pessoas.filter ((pessoa, index, array) => {
+const adultos = pessoas.filter((pessoa, index, array) => {
     if (pessoa.idade >= 20) {
-        return console.log ("Nome: " + pessoa.nome + " idade: " + pessoa.idade + "\n")
+        return console.log("Nome: " + pessoa.nome + " idade: " + pessoa.idade)
     }
 })
 
-const menoresDeIdade = pessoas.filter ((pessoa, index, array) => {
+const menoresDeIdade = pessoas.filter((pessoa, index, array) => {
     if (pessoa.idade < 20) {
-        return console.log ("Nome: " + pessoa.nome + " idade: " + pessoa.idade + "\n")
+        return console.log("Nome: " + pessoa.nome + " idade: " + pessoa.idade)
     }
 })
 
 /*Exercícios de funções de array
    Exercício 3 a, b e c */
-   
+
 function multiplicaPorDois(arrayNumeros) {
     arrayNumeros.forEach(elemento => {
-        return console.log (arrayNumeros = elemento*2)
+        return console.log(arrayNumeros = elemento * 2)
     });
 }
 
-multiplicaPorDois ([1, 2, 3, 4, 5, 6])
+multiplicaPorDois([1, 2, 3, 4, 5, 6])
 
-function multiplicaPorTresString(arrayNumeros){
+function multiplicaPorTresString(arrayNumeros) {
     arrayNumeros.forEach(elemento => {
-        return console.log ((arrayNumeros = elemento*2).toString)
+        return console.log((arrayNumeros = elemento * 2).toString)
     });
 }
 
-multiplicaPorTresString ([1, 2, 3, 4, 5, 6])
+multiplicaPorTresString([1, 2, 3, 4, 5, 6])
 
-function parOuImpar (arrayNumeros) {
+function parOuImpar(arrayNumeros) {
     let arrayStrings = []
     arrayNumeros.forEach(elemento => {
         if (elemento % 2 === 0) {
@@ -321,7 +321,31 @@ function parOuImpar (arrayNumeros) {
             arrayStrings.push(`${elemento} é ímpar`)
         }
     });
-    return console.log (arrayStrings)
+    return console.log(arrayStrings)
 }
 
-parOuImpar ([1, 2, 3, 4, 5, 6])
+parOuImpar([1, 2, 3, 4, 5, 6])
+
+/*Exercícios de funções de array
+   Exercício 4  a e b*/
+
+const visitantes = [
+    { nome: "Paula", idade: 12, altura: 1.8 },
+    { nome: "João", idade: 20, altura: 1.3 },
+    { nome: "Pedro", idade: 15, altura: 1.9 },
+    { nome: "Luciano", idade: 22, altura: 1.8 },
+    { nome: "Artur", idade: 10, altura: 1.2 },
+    { nome: "Soter", idade: 70, altura: 1.9 }
+]
+
+const pessoasPermitidas = visitantes.filter((pessoa, index, array) => {
+    if (pessoa.altura >= 1.5 && pessoa.idade > 14 && pessoa.idade < 60) {
+        return console.log("Nome: " + pessoa.nome + " idade: " + pessoa.idade + " altura: " + pessoa.altura)
+    }
+})
+
+const pessoasNaoPermitidas = visitantes.filter((pessoa, index, array) => {
+    if (pessoa.altura < 1.5 || pessoa.idade < 14 || pessoa.idade > 60) {
+        return console.log("Nome: " + pessoa.nome + " idade: " + pessoa.idade + " altura: " + pessoa.altura)
+    }
+})
