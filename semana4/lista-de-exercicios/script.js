@@ -213,3 +213,22 @@ function criaRetangulo (lado1, lado2) {
 
 criaRetangulo (Number(prompt("Digite o lado menor do retângulo:")), Number(prompt
     ("Digite o lado maior do retângulo:")))
+
+/* Exercícios de objetos
+   Exercício 3 */
+
+const serieFavorita = {
+    titulo: 'WestWorld',
+    ano: 2016,
+    criador: 'Jonathan Nolan',
+    elenco: ['Evan Rachel Wood', 'Thandie Newton', 'Jeffrey Wright', 'Ed Harris', 'James Marsden']
+}
+
+let atores = ""
+
+for (let index = 0; index < serieFavorita.elenco.length; index++) {
+    atores += serieFavorita.elenco[index] + " "
+}
+
+console.log ("Venha assistir " + serieFavorita.titulo + ", de " + serieFavorita.ano + 
+", criada por " + serieFavorita.criador + " e estrelado por " + atores)
