@@ -147,26 +147,26 @@ function segundoMaiorESegundoMenorNumero(vetorNumeros) {
     for (let index = 0; index < vetorNumeros.length; index++) {
         if (vetorNumeros[index] > maior) {
             maior = vetorNumeros[index]
-        } 
-        
+        }
+
         if (vetorNumeros[index] < menor) {
             menor = vetorNumeros[index]
         }
     }
 
     for (let i = 0; i < vetorNumeros.length; i++) {
-        if (vetorNumeros[i] > segundoMaior && vetorNumeros [i] < maior) {
+        if (vetorNumeros[i] > segundoMaior && vetorNumeros[i] < maior) {
             segundoMaior = vetorNumeros[i]
-        } 
-        
+        }
+
         if (vetorNumeros[i] < segundoMenor && vetorNumeros[i] > menor) {
             segundoMenor = vetorNumeros[i]
         }
     }
-    return console.log ("O segundo menor número é " + segundoMenor + "\nO segundo maior número é " + segundoMaior)
+    return console.log("O segundo menor número é " + segundoMenor + "\nO segundo maior número é " + segundoMaior)
 }
 
-segundoMaiorESegundoMenorNumero ([80, 30, 130, 40, 60, 21, 70, 120, 90, 103, 110, 55])
+segundoMaiorESegundoMenorNumero([80, 30, 130, 40, 60, 21, 70, 120, 90, 103, 110, 55])
 
 /* Exercícios de funções
    Exercício 2 */
@@ -175,7 +175,7 @@ let dizHello = function () {
     return alert("Hello Future4")
 }
 
-dizHello ()
+dizHello()
 
 /* Exercícios de objetos
    Exercício 1
@@ -189,9 +189,9 @@ dizHello ()
 /* Exercícios de objetos
    Exercício 2 */
 
-function criaRetangulo (lado1, lado2) {
+function criaRetangulo(lado1, lado2) {
     let altura = 0
-    
+
     if (lado1 < lado2) {
         altura = lado1
     } else {
@@ -206,12 +206,12 @@ function criaRetangulo (lado1, lado2) {
         area: lado1 * lado2
     }
 
-    return console.log ("Lado 1: " + retangulo.lado1 + "\n" + "Altura: " + retangulo.altura + 
-    "\n" + "Lado 2: " + retangulo.lado2 + "\n" + "Perímetro: " + retangulo.perimetro + "\n" +
-    "Área: " + retangulo.area)
+    return console.log("Lado 1: " + retangulo.lado1 + "\n" + "Altura: " + retangulo.altura +
+        "\n" + "Lado 2: " + retangulo.lado2 + "\n" + "Perímetro: " + retangulo.perimetro + "\n" +
+        "Área: " + retangulo.area)
 }
 
-criaRetangulo (Number(prompt("Digite o lado menor do retângulo:")), Number(prompt
+criaRetangulo(Number(prompt("Digite o lado menor do retângulo:")), Number(prompt
     ("Digite o lado maior do retângulo:")))
 
 /* Exercícios de objetos
@@ -230,5 +230,30 @@ for (let index = 0; index < serieFavorita.elenco.length; index++) {
     atores += serieFavorita.elenco[index] + " "
 }
 
-console.log ("Venha assistir " + serieFavorita.titulo + ", de " + serieFavorita.ano + 
-", criada por " + serieFavorita.criador + " e estrelado por " + atores)
+console.log("Venha assistir " + serieFavorita.titulo + ", de " + serieFavorita.ano +
+    ", criada por " + serieFavorita.criador + " e estrelado por " + atores)
+
+/* Exercícios de objetos
+   Exercício 4 */
+
+const pessoa = {
+    nome: 'Cindy',
+    idade: 23,
+    email: 'cindy@gato.com',
+    endereco: 'Rua dos gatos, 35 - Gatópolis'
+}
+
+console.log("Nome: " + pessoa.nome + "\n" + "Idade: " + pessoa.idade + "\n" + "E-mail: " +
+    pessoa.email + "\n" + "Endereço: " + pessoa.endereco)
+
+function anonimizarPessoa() {
+    const novaPessoa = {
+        ...pessoa,
+        nome: 'ANÔNIMO'
+    }
+
+    return console.log("Nome: " + novaPessoa.nome + "\n" + "Idade: " + novaPessoa.idade + "\n" + 
+    "E-mail: " + novaPessoa.email + "\n" + "Endereço: " + novaPessoa.endereco)
+}
+
+anonimizarPessoa()
