@@ -176,3 +176,6 @@ let dizHello = function () {
 }
 
 dizHello ()
+
+/* Exercícios de objetos
+   Exercício 1 */
