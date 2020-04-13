@@ -167,3 +167,12 @@ function segundoMaiorESegundoMenorNumero(vetorNumeros) {
 }
 
 segundoMaiorESegundoMenorNumero ([80, 30, 130, 40, 60, 21, 70, 120, 90, 103, 110, 55])
+
+/* Exercícios de funções
+   Exercício 2 */
+
+let dizHello = function () {
+    return alert("Hello Future4")
+}
+
+dizHello ()
