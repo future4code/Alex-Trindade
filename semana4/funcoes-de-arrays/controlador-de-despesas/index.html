@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="index.js" defer></script>
+    <link href="index.css" type="text/css" rel="stylesheet" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="cadastro">
+      <h1>Controlador de Despesas</h1>
+      <h4>Cadastrar Despesa</h4>
+      <form>
+        <label for="valor">Valor</label>
+        <input type="text" name="valor" id="valor">
+        <label for="tipo">Tipo (Aluguel, Plano de Saúde, Supermercado, etc)</label>
+        <select id="tipo">
+          <option value="selecione">Selecione</option>
+          <option value="aluguel">Aluguel</option>
+          <option value="plano">Plano de Saúde</option>
+          <option value="supermercado">Supermercado</option>
+          <option value="viagens">Viagens</option>
+          <option value="outros">Outros</option>
+        </select>
+        <label for="descricao">Descrição</label>
+        <input type="text" name="descricao" id="descricao">
+        <button onclick="cadastrar()">Cadastrar Despesa</button>
+      </form>
+    </div>
+  </body>
+</html>
