@@ -291,3 +291,37 @@ const menoresDeIdade = pessoas.filter ((pessoa, index, array) => {
         return console.log ("Nome: " + pessoa.nome + " idade: " + pessoa.idade + "\n")
     }
 })
+
+/*Exercícios de funções de array
+   Exercício 3 a, b e c */
+   
+function multiplicaPorDois(arrayNumeros) {
+    arrayNumeros.forEach(elemento => {
+        return console.log (arrayNumeros = elemento*2)
+    });
+}
+
+multiplicaPorDois ([1, 2, 3, 4, 5, 6])
+
+function multiplicaPorTresString(arrayNumeros){
+    arrayNumeros.forEach(elemento => {
+        return console.log ((arrayNumeros = elemento*2).toString)
+    });
+}
+
+multiplicaPorTresString ([1, 2, 3, 4, 5, 6])
+
+function parOuImpar (arrayNumeros) {
+    let arrayStrings = []
+    arrayNumeros.forEach(elemento => {
+        if (elemento % 2 === 0) {
+            arrayStrings.push(`${elemento} é par`)
+        }
+        if (elemento % 2 === 1) {
+            arrayStrings.push(`${elemento} é ímpar`)
+        }
+    });
+    return console.log (arrayStrings)
+}
+
+parOuImpar ([1, 2, 3, 4, 5, 6])
