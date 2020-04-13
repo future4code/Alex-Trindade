@@ -257,3 +257,15 @@ function anonimizarPessoa() {
 }
 
 anonimizarPessoa()
+
+/* Exercícios de funções de array
+   Exercício 1 
+   
+   Antes utilizava os laços, for, for of e while.
+
+   const array = [1, 10, 25, 65, 89]
+
+   for (numeros of array) {
+       console.log (numeros)
+   }
+*/
