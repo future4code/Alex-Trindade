@@ -178,4 +178,38 @@ let dizHello = function () {
 dizHello ()
 
 /* Exercícios de objetos
-   Exercício 1 */
+   Exercício 1
+
+   Objetos e arrays devem ser utilizados para armazenar dados de forma organizada, pois são
+   estruturas que podem armazenar diversos valores de uma vez. Devemos utilizar quando trabalhamos
+   com grandes quantidades de dados.
+   
+*/
+
+/* Exercícios de objetos
+   Exercício 2 */
+
+function criaRetangulo (lado1, lado2) {
+    let altura = 0
+    
+    if (lado1 < lado2) {
+        altura = lado1
+    } else {
+        altura = lado2
+    }
+
+    const retangulo = {
+        lado1: lado1,
+        altura: altura,
+        lado2: lado2,
+        perimetro: 2 * (lado1 + lado2),
+        area: lado1 * lado2
+    }
+
+    return console.log ("Lado 1: " + retangulo.lado1 + "\n" + "Altura: " + retangulo.altura + 
+    "\n" + "Lado 2: " + retangulo.lado2 + "\n" + "Perímetro: " + retangulo.perimetro + "\n" +
+    "Área: " + retangulo.area)
+}
+
+criaRetangulo (Number(prompt("Digite o lado menor do retângulo:")), Number(prompt
+    ("Digite o lado maior do retângulo:")))
