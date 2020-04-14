@@ -364,7 +364,7 @@ let email = []
 let pronome = ""
 let lembrar = ""
 
-consultas.forEach (paciente => {
+consultas.forEach(paciente => {
     if (paciente.genero === 'masculino') {
         pronome = 'Sr.'
         lembrar = 'lembrá-lo'
@@ -378,10 +378,34 @@ consultas.forEach (paciente => {
         ${lembrar} da sua consulta no dia ${paciente.dataDaConsulta}. Por favor, acuse o 
         recebimento deste e-mail.`)
     } else {
-        email.push (`Olá, ${pronome} ${paciente.nome}. Infelizmente, sua consulta marcada para 
+        email.push(`Olá, ${pronome} ${paciente.nome}. Infelizmente, sua consulta marcada para 
         o dia ${paciente.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco 
         para remarcá-la`)
     }
 })
 
-console.log (email)
+console.log(email)
+
+/*Exercícios de funções de array
+   Exercício 6 */
+
+const contas = [
+    { cliente: "João", saldoTotal: 1000, compras: [100, 200, 300] },
+    { cliente: "Paula", saldoTotal: 7500, compras: [200, 1040] },
+    { cliente: "Pedro", saldoTotal: 10000, compras: [5140, 6100, 100, 2000] },
+    { cliente: "Luciano", saldoTotal: 100, compras: [100, 200, 1700] },
+    { cliente: "Artur", saldoTotal: 1800, compras: [200, 300] },
+    { cliente: "Soter", saldoTotal: 1200, compras: [] }
+]
+
+contas.forEach(conta => {
+    let debitos = 0
+
+    conta.compras.forEach(compra => {
+        debitos += compra
+    })
+    
+    conta.saldoTotal -= debitos
+})
+
+console.log(contas)
