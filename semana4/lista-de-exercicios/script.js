@@ -349,3 +349,39 @@ const pessoasNaoPermitidas = visitantes.filter((pessoa, index, array) => {
         return console.log("Nome: " + pessoa.nome + " idade: " + pessoa.idade + " altura: " + pessoa.altura)
     }
 })
+
+/*Exercícios de funções de array
+   Exercício 5 */
+
+const consultas = [
+    { nome: "João", genero: "masculino", cancelada: true, dataDaConsulta: "01/10/2019" },
+    { nome: "Pedro", genero: "masculino", cancelada: false, dataDaConsulta: "02/10/2019" },
+    { nome: "Paula", genero: "feminino", cancelada: true, dataDaConsulta: "03/11/2019" },
+    { nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
+]
+
+let email = []
+let pronome = ""
+let lembrar = ""
+
+consultas.forEach (paciente => {
+    if (paciente.genero === 'masculino') {
+        pronome = 'Sr.'
+        lembrar = 'lembrá-lo'
+    } else {
+        pronome = 'Sra.'
+        lembrar = 'lembrá-la'
+    }
+
+    if (paciente.cancelada === false) {
+        email.push(`Olá, ${pronome} ${paciente.nome}. Estamos enviando esta mensagem para 
+        ${lembrar} da sua consulta no dia ${paciente.dataDaConsulta}. Por favor, acuse o 
+        recebimento deste e-mail.`)
+    } else {
+        email.push (`Olá, ${pronome} ${paciente.nome}. Infelizmente, sua consulta marcada para 
+        o dia ${paciente.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco 
+        para remarcá-la`)
+    }
+})
+
+console.log (email)
