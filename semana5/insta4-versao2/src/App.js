@@ -1,13 +1,42 @@
 import React from 'react';
-import './App.css';
 import Post from './components/Post/Post';
+import styled from 'styled-components'
+
+const AppContainer = styled.div `
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+`
+
+const InputContainer = styled.div `
+   height: 30vh;
+   display: flex;
+   justify-content: space-evenly;
+   flex-direction: column;
+`
+
+const Input = styled.input `
+  width: 22vw;
+  height: 4vh;
+  border-radius: 5px;
+  text-align: center;
+`
+
+const Botao = styled.button `
+  width: 10vw;
+  height: 3vw;
+  align-self: center;
+  border-radius: 5px;
+  font-weight: 600;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  font-size: 1.1em;
+`
 
 class App extends React.Component {
   state = {
-    valorInputNomeUsuario: "",
-    valorInputfotoUsuario: "",
-    valorInputfotoPost: "",
-
     postagens: [
       {
         nomeUsuario: 'paulinha',
@@ -22,39 +51,43 @@ class App extends React.Component {
       {
         nomeUsuario: 'amanda',
         fotoUsuario: 'https://picsum.photos/50/50?a=5',
-        fotoPost: 'https://picsum.photos/200/150?a=7'
+        fotoPost: 'https://picsum.photos/200/150?a=6'
       }
-    ]
+    ],
+
+    inputNomeUsuario: "",
+    inputFotoUsuario: "",
+    inputFotoPost: ""
   }
 
   adicionarPost = () => {
-    const novoPost = {
-      nomeUsuario: this.state.valorInputNomeUsuario,
-      fotoUsuario: this.state.valorInputfotoUsuario,
-      fotoPost: this.state.valorInputfotoPost
+    let novoPost = {
+      nomeUsuario: this.state.inputNomeUsuario,
+      fotoUsuario: this.state.inputFotoUsuario,
+      fotoPost: this.state.inputFotoPost
     }
 
-    const novoPostagens = [...this.state.postagens, novoPost]
+    let novoPostagens = [...this.state.postagens, novoPost]
     
     this.setState({ postagens: novoPostagens })
 
     this.setState({ 
-      valorInputNomeUsuario: "",
-      valorInputfotoUsuario: "",
-      valorInputfotoPost: ""
+      inputNomeUsuario: "",
+      inputFotoUsuario: "",
+      inputFotoPost: ""
      })
   }
 
   onChangeInputNomeUsuario = event => {
-    this.setState({ valorInputNomeUsuario: event.target.value })
+    this.setState({ inputNomeUsuario: event.target.value })
   }
 
   onChangeInputFotoUsuario = event => {
-    this.setState({ valorInputFotoUsuario: event.target.value })
+    this.setState({ inputFotoUsuario: event.target.value })
   }
 
   onChangeInputFotoPost = event => {
-    this.setState({ valorInputFotoPost: event.target.value })
+    this.setState({ inputFotoPost: event.target.value })
   }
 
   render() {
@@ -63,34 +96,34 @@ class App extends React.Component {
         <Post key = {conteudoPostagem.nomeUsuario}
           nomeUsuario = {conteudoPostagem.nomeUsuario}
           fotoUsuario = {conteudoPostagem.fotoUsuario}
-          fotoPost = {conteudoPostagem.fotoUsuario}
+          fotoPost = {conteudoPostagem.fotoPost}
         />
       )
     })
 
     return (
-      <div className={'app-container'}>
-        <div>
-        <input
-            value={this.state.valorInputNomeUsuario}
-            onChange={this.onChangeInputNomeUsuario}
-            placeholder={"Nome de usuário"}
-        />
-        <input
-            value={this.state.valorInputFotoUsuario}
-            onChange={this.onChangeInputFotoUsuario}
-            placeholder={"Foto de usuário"}
-        />
-        <input
-            value={this.state.valorInputFotoPost}
-            onChange={this.onChangeInputFotoUsuario}
-            placeholder={"Foto que deseja postar"}
-        />
-        <button onClick= {this.adicionarPost}>Adicionar</button>
-        </div>
+      <AppContainer>
+        <InputContainer>
+          <Input
+              value={this.state.inputNomeUsuario}
+              onChange={this.onChangeInputNomeUsuario}
+              placeholder={"Nome de usuário"}
+          />
+          <Input
+              value={this.state.inputFotoUsuario}
+              onChange={this.onChangeInputFotoUsuario}
+              placeholder={"Foto de usuário"}
+          />
+          <Input
+              value={this.state.inputFotoPost}
+              onChange={this.onChangeInputFotoPost}
+              placeholder={"Foto que deseja postar"}
+          />
+          <Botao onClick= {this.adicionarPost}>Adicionar</Botao>
+        </InputContainer>
 
         <div>{ListaDePostagens}</div>
-      </div>
+      </AppContainer>
     )
   }
 }
