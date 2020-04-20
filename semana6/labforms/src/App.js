@@ -6,10 +6,10 @@ import { Final } from './components/Final'
 import styled from 'styled-components'
 
 const Container = styled.div `
-  width: 50vw;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `
 
 class App extends React.Component {
