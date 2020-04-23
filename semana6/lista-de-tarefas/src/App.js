@@ -48,11 +48,9 @@ class App extends React.Component {
 
     this.setState({ tarefas: novoTarefas })
 
-    localStorage.setItem ("arrayTarefas", JSON.stringify(this.state.tarefas))
-
-    console.log (localStorage.getItem("arrayTarefas"))
-
     this.setState({ inputValue: '', filter: '' })
+
+    localStorage.setItem ("arrayTarefas", JSON.stringify(this.state.tarefas))
   }
 
   selectTarefa = (id) => {
@@ -70,6 +68,8 @@ class App extends React.Component {
     })
 
     this.setState({ tarefas: novoTarefas })
+
+    localStorage.setItem ("novoArrayTarefas", JSON.stringify(this.state.tarefas))
   }
 
   onChangeFilter = (event) => {
