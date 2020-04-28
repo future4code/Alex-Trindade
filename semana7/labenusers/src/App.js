@@ -12,13 +12,40 @@ class App extends React.Component{
     usuarios: []
   }
 
+  cadastrar = () => {
+    this.salvarContato(this.state.nomeValue, this.state.emailValue)
+
+    this.setState({
+      nomeValue: "",
+      emailValue: ""
+    })
+  }
+
+  salvarContato = (nome, email) => {
+    const body = {
+      name: nome,
+      email: email
+    }
+
+    axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users", body,
+    {
+      headers: {
+        Authorization: "alex-trindade-julian"
+      }
+    }).then(resposta => {
+      alert("Contato Salvo!", resposta)
+    }).catch(erro => {
+      alert("ERRO!", erro)
+    })
+  }
+
   exibirUsuarios = () => {
     axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users", {
       headers: {
         Authorization: "alex-trindade-julian"
       }
     }).then(resposta => {
-      this.setState({ usuarios: resposta.data.result.list })
+      this.setState({ usuarios: resposta.data })
     }).catch(erro => {
       alert("ERRO!", erro.response)
     })
@@ -26,6 +53,8 @@ class App extends React.Component{
 
   onClickPaginaDeLista = () => {
     this.setState({ mudarDePagina: true })
+
+    this.exibirUsuarios()
   }
 
   onClickPaginaDeRegistro = () => {
@@ -39,7 +68,7 @@ class App extends React.Component{
   }
 
   onChangeEmail = (event) => {
-    this.setState({ nomeValue: event.target.value })
+    this.setState({ emailValue: event.target.value })
   }
 
   render() {
@@ -54,8 +83,11 @@ class App extends React.Component{
       return (
         <CadastraUsuarios 
           clickRegistro={this.onClickPaginaDeLista}
+          nomeValue={this.state.nomeValue}
+          emailValue={this.state.emailValue}
           onChangeNome={this.onChangeNome}
           onChangeEmail={this.onChangeEmail}
+          clickSalvar={this.cadastrar}
         />
       )
     }
