@@ -2,8 +2,27 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import Matches from "./components/Matches.js";
-import { Container, FlexContainer, Header, Cursor } from "./StyledApp.js";
-import Logo from './images/logosize.jpg'
+import {
+  Container,
+  FlexContainer,
+  Header,
+  Cursor,
+  LogoApp,
+  MatchButton,
+  Main,
+  ContainerFoto,
+  ImagemPerfil,
+  ContainerDados,
+  NomeIdade,
+  Nome,
+  Idade,
+  Bio,
+  ContainerButtons,
+  Nope,
+  Like,
+} from "./StyledApp.js";
+import Logo from "./images/logosize.jpg";
+import MatchIcon from "./images/match.png";
 
 function App(props) {
   const [perfil, setPerfil] = useState({});
@@ -49,9 +68,7 @@ function App(props) {
       )
       .then((resposta) => {
         return (
-          alert("Aplicação resetada!"),
-          pegaPerfil(), 
-          props.lista
+          alert("Aplicação resetada!"), pegaPerfil(), props.lista
         ) 
       })
       .catch((error) => {
@@ -82,38 +99,40 @@ function App(props) {
   switch (telaAtual) {
     case "principal":
       secao = (
-        <Container>
-          <FlexContainer>
-            <Header>
-              <Cursor></Cursor>
-              <img src={Logo} alt='logo'/>
-              <div>
-                <button onClick={onClickMatches}>Tela de Matches</button>
-              </div>
-            </Header>
-            <div>
-              <div>
-                <div></div>
-                <img src={perfil.photo} alt='imagem-perfil' />
-                <div>
-                  <div>
-                    <div>{perfil.name + ", "}</div>
-                    <div>{perfil.age}</div>
-                  </div>
-                  <p>{perfil.bio}</p>
-                </div>
-              </div>
-              <div>
-                <button onClick={onClickNope}>Nope</button>
-                <button onClick={onClickLike}>Like</button>
-              </div>
-            </div>
-          </FlexContainer>
-        </Container>
+        <div>
+          <Container>
+            <FlexContainer>
+              <Header>
+                <Cursor></Cursor>
+                <LogoApp src={Logo} alt='logo' />
+                <MatchButton onClick={onClickMatches}>
+                  <img src={MatchIcon} alt='iconePerfil' />
+                </MatchButton>
+              </Header>
+              <Main>
+                <ContainerFoto>
+                  <ImagemPerfil src={perfil.photo} alt='imagem-perfil' />
+                  <ContainerDados>
+                    <NomeIdade>
+                      <Nome>{perfil.name + ","}</Nome>
+                      <Idade>{perfil.age}</Idade>
+                    </NomeIdade>
+                    <Bio>{perfil.bio}</Bio>
+                  </ContainerDados>
+                </ContainerFoto>
+                <ContainerButtons>
+                  <Nope onClick={onClickNope}>X</Nope>
+                  <Like onClick={onClickLike}>♥</Like>
+                </ContainerButtons>
+              </Main>
+            </FlexContainer>
+          </Container>
+          <button onClick={limpaTudo}>Limpar swipes e Matches</button>
+        </div>
       );
       break;
     case "matches":
-      secao = <Matches />;
+      secao = <Matches Limpar = {limpaTudo}/>;
       break;
     default:
       secao = <App />;
@@ -122,8 +141,7 @@ function App(props) {
 
   return (
     <div>
-      {secao}
-      <button onClick={limpaTudo}>Limpar swipes e Matches</button>
+      {secao} 
     </div>
   );
 }

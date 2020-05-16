@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import App from "../App.js";
+import Perfis from "../images/profiles.png";
+import LogoInvert from "../images/logoinvert.jpg";
+import {
+  Container,
+  Header,
+  ProfileButton,
+  Lista,
+  ItemLista,
+  PerfilImage,
+} from "./StyledMatches.js";
+import { LogoApp, Cursor } from "../StyledApp.js";
 
-function Matches() {
+function Matches(props) {
   const [telaAtual, setTelaAtual] = useState("matches");
   const [listaDeMatches, setListaDeMatches] = useState(undefined);
 
@@ -30,29 +41,33 @@ function Matches() {
   if (telaAtual === "matches") {
     return (
       <div>
-        <div>
+        <Container>
           <div>
-            <div>
-              <button onClick={onClickPerfis}>Perfis</button>
-            </div>
-            logo astromatch
-            <div></div>
+            <Header>
+              <ProfileButton onClick={onClickPerfis}>
+                <img src={Perfis} alt='íconePerfis' />
+              </ProfileButton>
+              <LogoApp src={LogoInvert} alt='logo' />
+              <Cursor></Cursor>
+            </Header>
+            <Lista>
+              {listaDeMatches &&
+                listaDeMatches.map((perfil) => {
+                  return (
+                    <ItemLista>
+                      <PerfilImage src={perfil.photo} alt='fotoPerfil' />
+                      <p>{perfil.name}</p>
+                    </ItemLista>
+                  );
+                })}
+            </Lista>
           </div>
-          <ul>
-            {listaDeMatches && listaDeMatches.map(perfil => {
-                return (
-                    <li>
-                        <div src={perfil.photo}></div>
-                        <p>{perfil.nome}</p>
-                    </li>
-                )
-            })}
-          </ul>
-        </div>
+        </Container>
+        <button onClick={props.Limpar}>Limpar swipes e Matches</button>
       </div>
     );
   } else {
-    return <App lista = {ListarMatches}/>;
+    return <App pagina={"principal"} lista={ListarMatches} />;
   }
 }
 
