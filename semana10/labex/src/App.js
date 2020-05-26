@@ -1,9 +1,12 @@
 import React from "react";
 import "./App.css";
-import HomePage from "./pages/HomePage";
+import Router from "./components/Router";
+import { createBrowserHistory } from "history";
+
+export const history = createBrowserHistory();
 
 function App() {
-  return <HomePage />;
+  return <Router history={history}/>;
 }
 
 export default App;

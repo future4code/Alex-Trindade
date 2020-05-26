@@ -6,25 +6,15 @@ import ListTripsPage from "../pages/ListTripsPage";
 import Login from "../pages/Login";
 import TripDetailsPage from "../pages/TripDetailsPage";
 
-const Router = () => {
+const Router = (props) => {
   return (
-    <BrowserRouter>
+    <BrowserRouter history={props.history}>
       <Switch>
-        <Route exact path='/'>
-          <HomePage />
-        </Route>
-        <Route exact path='/criar-viagem'>
-          <CreateTripPage />
-        </Route>
-        <Route exact path='/viagens'>
-          <ListTripsPage />
-        </Route>
-        <Route exact path='/login'>
-          <Login />
-        </Route>
-        <Route exact path='/detalhes-viagem'>
-          <TripDetailsPage />
-        </Route>
+        <Route exact path='/' component={HomePage} />
+        <Route exact path='/criar-viagem' component={CreateTripPage} />
+        <Route exact path='/viagens' component={ListTripsPage} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/detalhes-viagem' component={TripDetailsPage} />
       </Switch>
     </BrowserRouter>
   );
