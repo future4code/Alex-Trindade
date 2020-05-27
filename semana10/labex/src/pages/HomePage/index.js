@@ -1,4 +1,6 @@
 import React from "react";
+import Logo from "../../images/logo.png";
+import { Main, SecaoSuperior, Logotipo, Frase } from "./StyleHome";
 
 const HomePage = (props) => {
   const goToLogin = () => {
@@ -10,10 +12,17 @@ const HomePage = (props) => {
   };
 
   return (
-    <div>
+    <Main>
+      <SecaoSuperior>
+        <Logotipo src = {Logo} alt = {"logo da empresa"} />
+        <Frase>Bem vindos a LabeSpace</Frase>
+        <Frase>Encontre as melhores viagens espaciais!</Frase>
+      </SecaoSuperior>
+      <section>
         <button onClick={goToLogin}>Login</button>
         <button onClick={goToListTrips}>Ver Viagens</button>
-    </div>
+      </section>
+    </Main>
   );
 };
 
