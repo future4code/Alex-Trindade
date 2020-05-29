@@ -6,7 +6,7 @@ import { createBrowserHistory } from "history";
 export const history = createBrowserHistory();
 
 function App() {
-  return <Router history={history}/>;
+  return <Router history = {history}/>;
 }
 
 export default App;
