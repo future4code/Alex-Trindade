@@ -1,9 +1,7 @@
 import React from "react";
-import Logo from "../../../images/logo.png";
 import {
   Main,
   SecaoSuperior,
-  Logotipo,
   Frase,
   SecaoInferior,
   Buttons,
@@ -19,9 +17,8 @@ const HomePage = (props) => {
   };
 
   return (
-    <Main>
+    <main>
       <SecaoSuperior>
-        <Logotipo src={Logo} alt={"logo da empresa"} />
         <Frase>Bem vindos a LabeSpace</Frase>
         <Frase>Encontre as melhores viagens espaciais!</Frase>
       </SecaoSuperior>
@@ -29,7 +26,7 @@ const HomePage = (props) => {
         <Buttons onClick={goToLogin}>Login</Buttons>
         <Buttons onClick={goToListTrips}>Ver Viagens</Buttons>
       </SecaoInferior>
-    </Main>
+    </main>
   );
 };
 

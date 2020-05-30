@@ -5,6 +5,7 @@ import CreateTripPage from "./pages/CreateTripPage";
 import ListTripsPage from "./pages/ListTripsPage";
 import Login from "./pages/Login";
 import TripDetailsPage from "./pages/TripDetailsPage";
+import FormPage from "./pages/FormPage";
 
 const Router = (props) => {
   return (
@@ -15,6 +16,7 @@ const Router = (props) => {
         <Route exact path='/viagens' component={ListTripsPage} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/detalhes-viagem/:id' component={TripDetailsPage} />
+        <Route exact path='/formulario' component={FormPage} />
       </Switch>
     </BrowserRouter>
   );

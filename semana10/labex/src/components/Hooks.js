@@ -7,8 +7,12 @@ export const useForm = (initialValues) => {
   const onChange = (name, value) => {
     setForm({ ...form, [name]: value });
   };
+  
+  const resetForm = () => {
+    setForm(initialValues);
+  };
 
-  return { form, onChange };
+  return { form, onChange, resetForm };
 };
 
 export const useListaViagens = () => {

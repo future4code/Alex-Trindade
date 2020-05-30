@@ -1,14 +1,16 @@
 import Background from "../../../images/mainWallpaper.jpg";
 import Styled from "styled-components";
 
-export const Main = Styled.main`
-    background-image: url(${Background});
+export const ContainerBody = Styled.main`
+    width: 90vw;
+
+    /*background-image: url(${Background});
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
     background-position: center;
     background-color: rgba(10,23,55,0.4);
     height: 100vh;
-    width: 100vw;
+    width: 100vw;*/
 `;
 
 export const SecaoSuperior = Styled.section`
