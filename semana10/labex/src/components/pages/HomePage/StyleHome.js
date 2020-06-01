@@ -1,47 +1,34 @@
 import Background from "../../../images/mainWallpaper.jpg";
 import Styled from "styled-components";
 
-export const ContainerBody = Styled.main`
+export const Container = Styled.main`
     width: 90vw;
-
-    /*background-image: url(${Background});
-    background-size: 100vw 100vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: rgba(10,23,55,0.4);
-    height: 100vh;
-    width: 100vw;*/
 `;
 
-export const SecaoSuperior = Styled.section`
-    height: 50%;
+export const Content = Styled.section`
+    height: 130vh;
+    background-image: url(${Background});
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
     background-color: rgba(10,23,55,0.4);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-`;
-
-export const Logotipo = Styled.img`
-    width: 20%;
-    height: 50%;
-`;
-
-export const Frase = Styled.span`
     color: white;
-    font-size: 2em;
-    font-weight: 500;
-    margin: 1vh;
-`;
 
-export const SecaoInferior = Styled.section`
-    height: 50%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-`;
+    h1 {
+        font-size: 4em;
+    }
 
-export const Buttons = Styled.button`
-    height: 40%;
-    font-size: 3em;
+    h3 {
+        font-size: 2em;
+    }
+
+    Button {
+        font-size: 1.5em;
+        font-weight: bold;
+        border: 2px solid white;
+    }
 `;

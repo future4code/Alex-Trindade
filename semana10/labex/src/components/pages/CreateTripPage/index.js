@@ -1,15 +1,45 @@
-import React from "react";
+import React, { Fragment, useState } from "react";
+import { KeyboardDatePicker } from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { useForm } from "../../Hooks";
 import axios from "axios";
+import Header from "../../Header";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
+import Footer from "../../Footer";
+import TextField from "@material-ui/core/TextField";
+import MenuItem from "@material-ui/core/MenuItem";
+import Button from "@material-ui/core/Button";
+import Send from "@material-ui/icons/Send";
+import Cancel from "@material-ui/icons/Cancel";
+import Form2 from "../../../images/Form2.jpg";
+import {
+  Container,
+  Body,
+  ImgContainer,
+  FormContainer,
+  Form,
+  ContainerButtons,
+} from "../FormPage/StyleForm";
+
+const MyTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#273a4e",
+    },
+  },
+});
 
 const CreateTripPage = (props) => {
-  const { form, onChange } = useForm({
+  const { form, onChange, resetForm } = useForm({
     name: "",
     planet: "selecione",
     date: "",
     description: "",
     durationInDays: "",
   });
+
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   const token = localStorage.getItem("token");
 
@@ -24,15 +54,25 @@ const CreateTripPage = (props) => {
   }
 
   const handleSubmit = (event) => {
-    //moment(form.date).format("DD/MM/YY");
     event.preventDefault();
 
-    console.log(form);
+    let formatDate;
+
+    if (form.date !== null) {
+      let day =
+        (selectedDate.getDate() < 10 ? "0" : "") + selectedDate.getDate();
+      let month =
+        (selectedDate.getMonth() + 1 < 10 ? "0" : "") +
+        (selectedDate.getMonth() + 1);
+      let year = selectedDate.getYear() - 100;
+      const newDate = day + "/" + month + "/" + year;
+      formatDate = newDate;
+    }
 
     const body = {
       name: form.name,
       planet: form.planet,
-      date: form.date,
+      date: formatDate,
       description: form.description,
       durationInDays: form.durationInDays,
     };
@@ -49,61 +89,127 @@ const CreateTripPage = (props) => {
       )
       .then((response) => {
         window.alert("Viagem criada com sucesso.");
+        resetForm();
       })
       .catch((error) => {
         window.alert("Falha ao criar viagem.");
       });
   };
 
+  const cancel = () => {
+    props.history.push("/viagens");
+  };
+
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label name='name'>Título da Viagem</label>
-        <input
-          value={form.name}
-          onChange={handleInputChange}
-          name='name'
-          type='text'
-          required
-        />
-        <label name='planet'>Planeta: </label>
-        <select onChange={handleInputChange} name='planet' required>
-          <option value='selecione'>Selecione</option>
-          <option value='mercurio'>Mercúrio</option>
-          <option value='venus'>Vênus</option>
-          <option value='marte'>Marte</option>
-          <option value='jupiter'>Júpiter</option>
-          <option value='saturno'>Saturno</option>
-          <option value='urano'>Urano</option>
-          <option value='netuno'>Netuno</option>
-          <option value='plutao'>Plutão</option>
-        </select>
-        <label name='date'>Data da viagem: </label>
-        <input
-          value={form.date}
-          onChange={handleInputChange}
-          name='date'
-          type='date'
-          required
-        />
-        <label name='durationInDays'>Duração da Viagem: </label>
-        <input
-          value={form.durationInDays}
-          onChange={handleInputChange}
-          name='durationInDays'
-          type='number'
-          required
-        />
-        <label name='description'>Descrição: </label>
-        <textarea
-          value={form.description}
-          onChange={handleInputChange}
-          name='description'
-          required
-        />
-        <button>Criar</button>
-      </form>
-    </div>
+    <MuiThemeProvider theme={MyTheme}>
+      <Container>
+        <Header {...props} />
+        <Body>
+          <ImgContainer>
+            <img src={Form2} alt='form background' />
+          </ImgContainer>
+          <FormContainer>
+            <Form onSubmit={handleSubmit}>
+              <h1>Cadastre Uma Nova Viagem</h1>
+              <TextField
+                size='small'
+                label='Título da viagem'
+                value={form.name}
+                onChange={handleInputChange}
+                name='name'
+                type='text'
+                required
+                inputProps={{
+                  pattern: "[a-z0-9A-Z°- ]{5,}",
+                  title: "O título deve conter mais de 5 letras",
+                }}
+              />
+              <TextField
+                size='small'
+                onChange={handleInputChange}
+                name='planet'
+                required
+                select
+                label='Escolha o planeta'
+                helperText='Selecione o planeta de destino da viagem'
+              >
+                <MenuItem value='mercurio'>Mercúrio</MenuItem>
+                <MenuItem value='venus'>Vênus</MenuItem>
+                <MenuItem value='marte'>Marte</MenuItem>
+                <MenuItem value='jupiter'>Júpiter</MenuItem>
+                <MenuItem value='saturno'>Saturno</MenuItem>
+                <MenuItem value='urano'>Urano</MenuItem>
+                <MenuItem value='netuno'>Netuno</MenuItem>
+                <MenuItem value='plutao'>Plutão</MenuItem>
+              </TextField>
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <Fragment>
+                  <KeyboardDatePicker
+                    required
+                    label='Data da Viagem'
+                    name='date'
+                    clearable
+                    value={selectedDate}
+                    onChange={(date) => {
+                      setSelectedDate(date);
+                    }}
+                    minDate={new Date()}
+                    format='dd/MM/yy'
+                  />
+                </Fragment>
+              </MuiPickersUtilsProvider>
+              <TextField
+                size='small'
+                label='Duração da viagem'
+                helperText='Tempo (dias) de duração da viagem'
+                value={form.durationInDays}
+                onChange={handleInputChange}
+                name='durationInDays'
+                type='number'
+                required
+                min='50'
+              />
+              <TextField
+                label='Insira a descrição da viagem'
+                value={form.description}
+                onChange={handleInputChange}
+                name='description'
+                required
+                multiline
+                inputProps={{
+                  pattern: "[A-Za-z 0-9,.;:/!@#$%()-=]{30,500}",
+                  title: "A descrição deve conter entre 30 e 500 caracteres",
+                }}
+                rowsMax='8'
+              />
+              <ContainerButtons>
+                <Button
+                  variant='contained'
+                  endIcon={<Cancel />}
+                  color='primary'
+                  onClick={cancel}
+                  disableElevation
+                  size='medium'
+                >
+                  Cancelar
+                </Button>
+                <Button
+                  variant='contained'
+                  endIcon={<Send />}
+                  color='primary'
+                  type='submit'
+                  disableElevation
+                  size='large'
+                >
+                  Enviar
+                </Button>
+              </ContainerButtons>
+            </Form>
+          </FormContainer>
+        </Body>
+        <Footer />
+      </Container>
+    </MuiThemeProvider>
   );
 };
 

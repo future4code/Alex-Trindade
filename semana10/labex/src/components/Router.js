@@ -14,9 +14,9 @@ const Router = (props) => {
         <Route exact path='/' component={HomePage} />
         <Route exact path='/criar-viagem/' component={CreateTripPage} />
         <Route exact path='/viagens' component={ListTripsPage} />
-        <Route exact path='/login' component={Login} />
+        <Route exact path='/entrar' component={Login} />
         <Route exact path='/detalhes-viagem/:id' component={TripDetailsPage} />
-        <Route exact path='/formulario' component={FormPage} />
+        <Route exact path='/inscricoes' component={FormPage} />
       </Switch>
     </BrowserRouter>
   );

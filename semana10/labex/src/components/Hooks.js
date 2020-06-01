@@ -7,7 +7,7 @@ export const useForm = (initialValues) => {
   const onChange = (name, value) => {
     setForm({ ...form, [name]: value });
   };
-  
+
   const resetForm = () => {
     setForm(initialValues);
   };
@@ -15,8 +15,8 @@ export const useForm = (initialValues) => {
   return { form, onChange, resetForm };
 };
 
-export const useListaViagens = () => {
-  const [listaViagens, setListaViagens] = useState([]);
+export const useTripsList = () => {
+  const [tripsList, setTripsList] = useState([]);
 
   useEffect(() => {
     axios
@@ -24,12 +24,12 @@ export const useListaViagens = () => {
         `https://us-central1-labenu-apis.cloudfunctions.net/labeX/alex-trindade-julian/trips`
       )
       .then((response) => {
-        setListaViagens(response.data.trips);
+        setTripsList(response.data.trips);
       })
       .catch((error) => {
         window.alert("Erro ao listar as viagens.");
       });
-  }, [setListaViagens]);
+  }, [setTripsList]);
 
-  return listaViagens;
+  return tripsList;
 };

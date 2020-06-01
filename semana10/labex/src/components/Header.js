@@ -38,15 +38,27 @@ const ContainerMenu = Styled.nav`
     }
 `;
 
-const Header = () => {
+const Header = (props) => {
+  const goToHomePage = () => {
+    props.history.push("/");
+  };
+
+  const goToFormPage = () => {
+    props.history.push("/inscricoes");
+  };
+
+  const goToLoginPage = () => {
+    props.history.push("/entrar");
+  };
+
   return (
     <Container>
-      <Logo src={LabeSpaceHeader} alt='logotipo' />
+      <Logo onClick={goToHomePage} src={LabeSpaceHeader} alt='logotipo' />
       <ContainerMenu>
         <ul>
-          <li>Home</li>
-          <li>Inscrições</li>
-          <li>Entrar</li>
+          <li onClick={goToHomePage}>Página Inicial</li>
+          <li onClick={goToFormPage}>Inscrições</li>
+          <li onClick={goToLoginPage}>Entrar</li>
         </ul>
       </ContainerMenu>
     </Container>

@@ -1,19 +1,22 @@
 import React from "react";
+import { ContainerCard, CardViagemInfo, Details } from "./StyledCard";
 
 const CardViagem = (props) => {
   return (
-    <div>
-      <h1>{props.dadosViagem.name}</h1>
-      <span>{props.dadosViagem.planet}</span>
-      <div>"{props.dadosViagem.description}"</div>
-      <footer>
-        <div>{props.dadosViagem.date}</div>
-        <div>{props.dadosViagem.durationInDays}</div>
-        <div onClick={() => props.vaiParaDetalhes(props.dadosViagem.id)}>
-          DETALHES
-        </div>
-      </footer>
-    </div>
+    <ContainerCard>
+      <CardViagemInfo>
+        <h1>{props.dadosViagem.name}</h1>
+        <span>Planeta: {props.dadosViagem.planet}</span>
+        <p>"{props.dadosViagem.description}"</p>
+        <footer>
+          <div>Data: {props.dadosViagem.date}</div>
+          <div>Dias Terrestres: {props.dadosViagem.durationInDays}</div>
+          <Details onClick={() => props.vaiParaDetalhes(props.dadosViagem.id)}>
+            DETALHES
+          </Details>
+        </footer>
+      </CardViagemInfo>
+    </ContainerCard>
   );
 };
 

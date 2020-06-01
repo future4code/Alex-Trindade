@@ -1,11 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Header from "../../Header";
+import Details from "../../../images/Details.jpg";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
+import {
+  Container,
+  Content,
+  ImgContainer,
+  TripData,
+  Planeta,
+  ContainerCandidato,
+} from "./StyledTripDetailsPage";
+import { ContainerButtons } from "../FormPage/StyleForm";
+import Button from "@material-ui/core/Button";
+import Footer from "../../Footer";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+
+const MyTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#273a4e",
+    },
+  },
+});
 
 const TripDetailsPage = (props) => {
   const params = useParams();
   const [viagem, setViagem] = useState([]);
-  const [candidates, setCandidates] = useState([])
+  const [candidates, setCandidates] = useState([]);
   const token = localStorage.getItem("token");
 
   if (token === null) {
@@ -28,7 +51,7 @@ const TripDetailsPage = (props) => {
       )
       .then((response) => {
         setViagem(response.data.trip);
-        setCandidates(response.data.trip.candidates)
+        setCandidates(response.data.trip.candidates);
       })
       .catch((error) => {
         window.alert("Erro ao exibir viagem.");
@@ -37,8 +60,8 @@ const TripDetailsPage = (props) => {
 
   const decideCandidate = (candidateId, button) => {
     let decision = undefined;
-    console.log(button)
-    console.log(candidateId)
+    console.log(button);
+    console.log(candidateId);
 
     if (button === "aprovar") {
       decision = true;
@@ -46,7 +69,7 @@ const TripDetailsPage = (props) => {
       decision = false;
     }
 
-    console.log(decision)
+    console.log(decision);
 
     const body = {
       approve: true,
@@ -72,42 +95,66 @@ const TripDetailsPage = (props) => {
       })
       .catch((error) => {
         window.alert("Erro ao aprovar/reprovar candidato.");
-        console.log(error)
+        console.log(error);
       });
   };
 
+  const voltar = () => {
+    props.history.push("/viagens");
+  };
+
   return (
-    <div>
-      <h1>{viagem.name}</h1>
-      <p>{viagem.planet}</p>
-      <p>{viagem.description}</p>
-      <p>{viagem.date}</p>
-      <p>{viagem.durationInDays}</p>
-      <div>
-        <h2>Candidatos</h2>
-        {candidates.map((candidate) => {
-            return (
-              <div>
-                <p>{candidate.applicationText}</p>
-                <p>{candidate.country}</p>
-                <p>{candidate.profession}</p>
-                <p>{candidate.age}</p>
-                <p>{candidate.name}</p>
-                <button
-                  onClick={() => decideCandidate(candidate.id, "aprovar")}
-                >
-                  Aprovar
-                </button>
-                <button
-                  onClick={() => decideCandidate(candidate.id, "reprovar")}
-                >
-                  Reprovar
-                </button>
-              </div>
-            );
-          })}
-      </div>
-    </div>
+    <MuiThemeProvider theme={MyTheme}>
+      <Container>
+        <Header {...props} />
+        <Content>
+          <ImgContainer>
+            <img src={Details} alt='details background' />
+          </ImgContainer>
+          <TripData>
+            <h1>{viagem.name}</h1>
+            <Planeta>Planeta: {viagem.planet}</Planeta>
+            <p>{viagem.description}</p>
+            <p>Data: {viagem.date}</p>
+            <p>Duração: {viagem.durationInDays} dias</p>
+            <h2>Candidatos</h2>
+            {candidates.map((candidate) => {
+              return (
+                <ContainerCandidato>
+                  <p>{candidate.name}</p>
+                  <p>{candidate.age}</p>
+                  <p>{candidate.profession}</p>
+                  <p>{candidate.country}</p>
+                  <p>{candidate.applicationText}</p>
+                  <ContainerButtons>
+                    <Button
+                      variant='contained'
+                      disableElevation
+                      size='medium'
+                      color='primary'
+                      onClick={() => decideCandidate(candidate.id, "aprovar")}
+                    >
+                      Aprovar
+                    </Button>
+                    <Button
+                      variant='contained'
+                      disableElevation
+                      size='medium'
+                      color='primary'
+                      onClick={() => decideCandidate(candidate.id, "reprovar")}
+                    >
+                      Reprovar
+                    </Button>
+                  </ContainerButtons>
+                </ContainerCandidato>
+              );
+            })}
+            <button onClick={voltar}>Voltar</button>
+          </TripData>
+        </Content>
+        <Footer />
+      </Container>
+    </MuiThemeProvider>
   );
 };
 

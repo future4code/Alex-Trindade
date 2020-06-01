@@ -1,32 +1,42 @@
 import React from "react";
-import {
-  Main,
-  SecaoSuperior,
-  Frase,
-  SecaoInferior,
-  Buttons,
-} from "./StyleHome";
+import { Container, Content } from "./StyleHome";
+import Header from "../../Header";
+import Footer from "../../Footer";
+import Button from "@material-ui/core/Button";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
+
+const MyTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#f0f3f6",
+    },
+  },
+});
 
 const HomePage = (props) => {
-  const goToLogin = () => {
-    props.history.push("/login");
-  };
-
-  const goToListTrips = () => {
-    props.history.push("/viagens");
+  const goToFormPage = () => {
+    props.history.push("/inscricoes");
   };
 
   return (
-    <main>
-      <SecaoSuperior>
-        <Frase>Bem vindos a LabeSpace</Frase>
-        <Frase>Encontre as melhores viagens espaciais!</Frase>
-      </SecaoSuperior>
-      <SecaoInferior>
-        <Buttons onClick={goToLogin}>Login</Buttons>
-        <Buttons onClick={goToListTrips}>Ver Viagens</Buttons>
-      </SecaoInferior>
-    </main>
+    <MuiThemeProvider theme={MyTheme}>
+      <Container>
+        <Header {...props} />
+        <Content>
+          <h1>BEM VINDOS A LABESPACE</h1>
+          <h3>Encontre as melhores viagens espaciais!</h3>
+          <Button
+            variant='outlined'
+            color='primary'
+            onClick={goToFormPage}
+            size='large'
+          >
+            Inscreva-se
+          </Button>
+        </Content>
+        <Footer />
+      </Container>
+    </MuiThemeProvider>
   );
 };
 
