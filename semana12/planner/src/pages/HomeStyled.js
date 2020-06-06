@@ -69,7 +69,7 @@ export const ContainerDay = Styled.section`
     border: 1vh double #2b393b;
     border-radius: 10px;
     margin-top: 4vh;
-    width: 30vw;
+    width: 28vw;
     min-height: 60vh;
     background-color: #6e8492;
     padding: 1vw;
@@ -78,11 +78,36 @@ export const ContainerDay = Styled.section`
         font-size: 1.1em;
         display: flex;
         justify-content:space-between;
+        margin-top: 1vh;
     }
 `
 
 export const ContainerButtons = Styled.section`
     display: flex;
-    width: 12vw;
+    width: 8vw;
     justify-content: space-around;
+`
+
+export const ContainerEditar = Styled.section`
+   height: 20vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin-top: 1vh;
+
+   form {
+       height: 100%;
+       display: flex;
+       align-items: center;
+       align-content: space-between;
+       flex-direction: column;
+       justify-content: space-between;
+
+       div {
+           margin-top: 1vh;
+           display: flex;
+            width: 12vw;
+            justify-content: space-around;
+       }
+   }
 `

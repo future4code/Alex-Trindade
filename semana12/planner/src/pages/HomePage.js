@@ -9,7 +9,10 @@ import {
   Content,
   ContainerDay,
   ContainerButtons,
+  ContainerEditar,
 } from "./HomeStyled";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 
 const useForm = (initialValues) => {
   const [form, setForm] = useState(initialValues);
@@ -94,8 +97,8 @@ const HomePage = () => {
       });
   };
 
-  const clicaEditar = () => {
-    setMostraEditar(!mostraEditar);
+  const clicaEditar = (idTarefa) => {
+    setMostraEditar(idTarefa);
   };
 
   const editarTarefa = (idTarefa) => {
@@ -163,7 +166,12 @@ const HomePage = () => {
           />
           <div>
             <label htmlFor='day'>Dia:</label>
-            <select value={form.day} onChange={handleInputChange} name='day'>
+            <select
+              value={form.day}
+              onChange={handleInputChange}
+              name='day'
+              data-testid={"selecioneDia"}
+            >
               <option value='domingo'>Domingo</option>
               <option value='segunda'>Segunda</option>
               <option value='terça'>Terça</option>
@@ -174,8 +182,9 @@ const HomePage = () => {
             </select>
           </div>
           <div>
-            <label>Horário</label>
+            <label htmlFor='time'>Horário</label>
             <Input
+              data-testid={"hora"}
               type='time'
               value={form.time}
               onChange={handleInputChange}
@@ -195,32 +204,45 @@ const HomePage = () => {
                   <li>
                     {tarefa.task + " às " + tarefa.time}
                     <ContainerButtons>
-                      <Button onClick={clicaEditar}>Editar</Button>
-                      <Button onClick={() => excluirTarefa(tarefa.id)}>
+                      <Button onClick={() => clicaEditar(tarefa.id)}>
+                        <EditIcon />
+                      </Button>
+                      <Button
+                        data-testid={"excluir"}
+                        onClick={() => excluirTarefa(tarefa.id)}
+                      >
                         Excluir
+                        <DeleteIcon />
                       </Button>
                     </ContainerButtons>
                   </li>
-                  {mostraEditar === true ? (
-                    <form onSubmit={() => editarTarefa(tarefa.id)}>
-                      <Input
-                        placeholder='Nova Tarefa'
-                        value={InputTarefa}
-                        onChange={(event) => setInputTarefa(event.target.value)}
-                        name='task'
-                      />
-                      <label>Horário</label>
-                      <Input
-                        type='time'
-                        value={InputHora}
-                        onChange={(event) => setInputHora(event.target.value)}
-                        name='time'
-                      />
-                      <Button>OK</Button>
-                    </form>
-                  ) : (
-                    <div></div>
-                  )}
+                  {mostraEditar === tarefa.id ? (
+                    <ContainerEditar>
+                      <form onSubmit={() => editarTarefa(tarefa.id)}>
+                        <Input
+                          placeholder='Editar Tarefa'
+                          value={InputTarefa}
+                          onChange={(event) =>
+                            setInputTarefa(event.target.value)
+                          }
+                          name='task'
+                        />
+                        <label>Horário</label>
+                        <Input
+                          type='time'
+                          value={InputHora}
+                          onChange={(event) => setInputHora(event.target.value)}
+                          name='time'
+                        />
+                        <div>
+                          <Button onClick={() => setMostraEditar(false)}>
+                            Cancelar
+                          </Button>
+                          <Button>OK</Button>
+                        </div>
+                      </form>
+                    </ContainerEditar>
+                  ) : null}
                 </div>
               );
             })}
@@ -231,14 +253,26 @@ const HomePage = () => {
           <ul>
             {segunda.map((tarefa) => {
               return (
-                <li>
-                  {tarefa.task + " às " + tarefa.time}
-                  <div>
-                    <Button onClick={clicaEditar}>Editar</Button>
-                    {mostraEditar === true ? (
+                <div>
+                  <li>
+                    {tarefa.task + " às " + tarefa.time}
+                    <ContainerButtons>
+                      <Button onClick={() => clicaEditar(tarefa.id)}>
+                        <EditIcon />
+                      </Button>
+                      <Button
+                        data-testid={"excluir"}
+                        onClick={() => excluirTarefa(tarefa.id)}
+                      >
+                        <DeleteIcon />
+                      </Button>
+                    </ContainerButtons>
+                  </li>
+                  {mostraEditar === tarefa.id ? (
+                    <ContainerEditar>
                       <form onSubmit={() => editarTarefa(tarefa.id)}>
                         <Input
-                          placeholder='Nova Tarefa'
+                          placeholder='Editar Tarefa'
                           value={InputTarefa}
                           onChange={(event) =>
                             setInputTarefa(event.target.value)
@@ -252,16 +286,16 @@ const HomePage = () => {
                           onChange={(event) => setInputHora(event.target.value)}
                           name='time'
                         />
-                        <Button>OK</Button>
+                        <div>
+                          <Button onClick={() => setMostraEditar(false)}>
+                            Cancelar
+                          </Button>
+                          <Button>OK</Button>
+                        </div>
                       </form>
-                    ) : (
-                      <div></div>
-                    )}
-                    <Button onClick={() => excluirTarefa(tarefa.id)}>
-                      Excluir
-                    </Button>
-                  </div>
-                </li>
+                    </ContainerEditar>
+                  ) : null}
+                </div>
               );
             })}
           </ul>
@@ -271,14 +305,26 @@ const HomePage = () => {
           <ul>
             {terca.map((tarefa) => {
               return (
-                <li>
-                  {tarefa.task + " às " + tarefa.time}
-                  <div>
-                    <Button onClick={clicaEditar}>Editar</Button>
-                    {mostraEditar === true ? (
+                <div>
+                  <li>
+                    {tarefa.task + " às " + tarefa.time}
+                    <ContainerButtons>
+                      <Button onClick={() => clicaEditar(tarefa.id)}>
+                        <EditIcon />
+                      </Button>
+                      <Button
+                        data-testid={"excluir"}
+                        onClick={() => excluirTarefa(tarefa.id)}
+                      >
+                        <DeleteIcon />
+                      </Button>
+                    </ContainerButtons>
+                  </li>
+                  {mostraEditar === tarefa.id ? (
+                    <ContainerEditar>
                       <form onSubmit={() => editarTarefa(tarefa.id)}>
                         <Input
-                          placeholder='Nova Tarefa'
+                          placeholder='Editar Tarefa'
                           value={InputTarefa}
                           onChange={(event) =>
                             setInputTarefa(event.target.value)
@@ -292,16 +338,16 @@ const HomePage = () => {
                           onChange={(event) => setInputHora(event.target.value)}
                           name='time'
                         />
-                        <Button>OK</Button>
+                        <div>
+                          <Button onClick={() => setMostraEditar(false)}>
+                            Cancelar
+                          </Button>
+                          <Button>OK</Button>
+                        </div>
                       </form>
-                    ) : (
-                      <div></div>
-                    )}
-                    <Button onClick={() => excluirTarefa(tarefa.id)}>
-                      Excluir
-                    </Button>
-                  </div>
-                </li>
+                    </ContainerEditar>
+                  ) : null}
+                </div>
               );
             })}
           </ul>
@@ -311,14 +357,26 @@ const HomePage = () => {
           <ul>
             {quarta.map((tarefa) => {
               return (
-                <li>
-                  {tarefa.task + " às " + tarefa.time}
-                  <div>
-                    <Button onClick={clicaEditar}>Editar</Button>
-                    {mostraEditar === true ? (
+                <div>
+                  <li>
+                    {tarefa.task + " às " + tarefa.time}
+                    <ContainerButtons>
+                      <Button onClick={() => clicaEditar(tarefa.id)}>
+                        <EditIcon />
+                      </Button>
+                      <Button
+                        data-testid={"excluir"}
+                        onClick={() => excluirTarefa(tarefa.id)}
+                      >
+                        <DeleteIcon />
+                      </Button>
+                    </ContainerButtons>
+                  </li>
+                  {mostraEditar === tarefa.id ? (
+                    <ContainerEditar>
                       <form onSubmit={() => editarTarefa(tarefa.id)}>
                         <Input
-                          placeholder='Nova Tarefa'
+                          placeholder='Editar Tarefa'
                           value={InputTarefa}
                           onChange={(event) =>
                             setInputTarefa(event.target.value)
@@ -332,16 +390,16 @@ const HomePage = () => {
                           onChange={(event) => setInputHora(event.target.value)}
                           name='time'
                         />
-                        <Button>OK</Button>
+                        <div>
+                          <Button onClick={() => setMostraEditar(false)}>
+                            Cancelar
+                          </Button>
+                          <Button>OK</Button>
+                        </div>
                       </form>
-                    ) : (
-                      <div></div>
-                    )}
-                    <Button onClick={() => excluirTarefa(tarefa.id)}>
-                      Excluir
-                    </Button>
-                  </div>
-                </li>
+                    </ContainerEditar>
+                  ) : null}
+                </div>
               );
             })}
           </ul>
@@ -351,14 +409,26 @@ const HomePage = () => {
           <ul>
             {quinta.map((tarefa) => {
               return (
-                <li>
-                  {tarefa.task + " às " + tarefa.time}
-                  <div>
-                    <Button onClick={clicaEditar}>Editar</Button>
-                    {mostraEditar === true ? (
+                <div>
+                  <li>
+                    {tarefa.task + " às " + tarefa.time}
+                    <ContainerButtons>
+                      <Button onClick={() => clicaEditar(tarefa.id)}>
+                        <EditIcon />
+                      </Button>
+                      <Button
+                        data-testid={"excluir"}
+                        onClick={() => excluirTarefa(tarefa.id)}
+                      >
+                        <DeleteIcon />
+                      </Button>
+                    </ContainerButtons>
+                  </li>
+                  {mostraEditar === tarefa.id ? (
+                    <ContainerEditar>
                       <form onSubmit={() => editarTarefa(tarefa.id)}>
                         <Input
-                          placeholder='Nova Tarefa'
+                          placeholder='Editar Tarefa'
                           value={InputTarefa}
                           onChange={(event) =>
                             setInputTarefa(event.target.value)
@@ -372,16 +442,16 @@ const HomePage = () => {
                           onChange={(event) => setInputHora(event.target.value)}
                           name='time'
                         />
-                        <Button>OK</Button>
+                        <div>
+                          <Button onClick={() => setMostraEditar(false)}>
+                            Cancelar
+                          </Button>
+                          <Button>OK</Button>
+                        </div>
                       </form>
-                    ) : (
-                      <div></div>
-                    )}
-                    <Button onClick={() => excluirTarefa(tarefa.id)}>
-                      Excluir
-                    </Button>
-                  </div>
-                </li>
+                    </ContainerEditar>
+                  ) : null}
+                </div>
               );
             })}
           </ul>
@@ -391,14 +461,26 @@ const HomePage = () => {
           <ul>
             {sexta.map((tarefa) => {
               return (
-                <li>
-                  {tarefa.task + " às " + tarefa.time}
-                  <div>
-                    <Button onClick={clicaEditar}>Editar</Button>
-                    {mostraEditar === true ? (
+                <div>
+                  <li>
+                    {tarefa.task + " às " + tarefa.time}
+                    <ContainerButtons>
+                      <Button onClick={() => clicaEditar(tarefa.id)}>
+                        <EditIcon />
+                      </Button>
+                      <Button
+                        data-testid={"excluir"}
+                        onClick={() => excluirTarefa(tarefa.id)}
+                      >
+                        <DeleteIcon />
+                      </Button>
+                    </ContainerButtons>
+                  </li>
+                  {mostraEditar === tarefa.id ? (
+                    <ContainerEditar>
                       <form onSubmit={() => editarTarefa(tarefa.id)}>
                         <Input
-                          placeholder='Nova Tarefa'
+                          placeholder='Editar Tarefa'
                           value={InputTarefa}
                           onChange={(event) =>
                             setInputTarefa(event.target.value)
@@ -412,16 +494,16 @@ const HomePage = () => {
                           onChange={(event) => setInputHora(event.target.value)}
                           name='time'
                         />
-                        <Button>OK</Button>
+                        <div>
+                          <Button onClick={() => setMostraEditar(false)}>
+                            Cancelar
+                          </Button>
+                          <Button>OK</Button>
+                        </div>
                       </form>
-                    ) : (
-                      <div></div>
-                    )}
-                    <Button onClick={() => excluirTarefa(tarefa.id)}>
-                      Excluir
-                    </Button>
-                  </div>
-                </li>
+                    </ContainerEditar>
+                  ) : null}
+                </div>
               );
             })}
           </ul>
@@ -431,14 +513,26 @@ const HomePage = () => {
           <ul>
             {sabado.map((tarefa) => {
               return (
-                <li>
-                  {tarefa.task + " às " + tarefa.time}
-                  <div>
-                    <Button onClick={clicaEditar}>Editar</Button>
-                    {mostraEditar === true ? (
+                <div>
+                  <li>
+                    {tarefa.task + " às " + tarefa.time}
+                    <ContainerButtons>
+                      <Button onClick={() => clicaEditar(tarefa.id)}>
+                        <EditIcon />
+                      </Button>
+                      <Button
+                        data-testid={"excluir"}
+                        onClick={() => excluirTarefa(tarefa.id)}
+                      >
+                        <DeleteIcon />
+                      </Button>
+                    </ContainerButtons>
+                  </li>
+                  {mostraEditar === tarefa.id ? (
+                    <ContainerEditar>
                       <form onSubmit={() => editarTarefa(tarefa.id)}>
                         <Input
-                          placeholder='Nova Tarefa'
+                          placeholder='Editar Tarefa'
                           value={InputTarefa}
                           onChange={(event) =>
                             setInputTarefa(event.target.value)
@@ -452,16 +546,16 @@ const HomePage = () => {
                           onChange={(event) => setInputHora(event.target.value)}
                           name='time'
                         />
-                        <Button>OK</Button>
+                        <div>
+                          <Button onClick={() => setMostraEditar(false)}>
+                            Cancelar
+                          </Button>
+                          <Button>OK</Button>
+                        </div>
                       </form>
-                    ) : (
-                      <div></div>
-                    )}
-                    <Button onClick={() => excluirTarefa(tarefa.id)}>
-                      Excluir
-                    </Button>
-                  </div>
-                </li>
+                    </ContainerEditar>
+                  ) : null}
+                </div>
               );
             })}
           </ul>
