@@ -211,7 +211,6 @@ const HomePage = () => {
                         data-testid={"excluir"}
                         onClick={() => excluirTarefa(tarefa.id)}
                       >
-                        Excluir
                         <DeleteIcon />
                       </Button>
                     </ContainerButtons>
