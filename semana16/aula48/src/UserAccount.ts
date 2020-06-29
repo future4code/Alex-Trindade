@@ -1,4 +1,6 @@
+/* eslint-disable */
 import { Transaction } from "./Transaction";
+import * as moment from "moment";
 
 export class UserAccount {
   private cpf: string;
@@ -7,10 +9,36 @@ export class UserAccount {
   private balance: number = 0;
   private transactions: Transaction[] = [];
 
-  constructor(cpf: string, name: string, birthDate: string) {
-    this.cpf = cpf;
+  constructor(name: string, cpf: string, birthDate: string) {
     this.name = name;
+    this.cpf = cpf;
     this.birthDate = birthDate;
+
+    if (!name || !birthDate || !cpf) {
+      console.log("Dados inválidos.");
+      return;
+    }
+
+    const birthDateFormatted: moment.Moment = moment(birthDate, "DD, MM, YYYY");
+    const todaysDate: moment.Moment = moment();
+    const age: number = todaysDate.diff(birthDateFormatted, "years");
+
+    if (age < 18) {
+      console.log("Você tem que ser maior de 18 anos.");
+      return;
+    }
+  }
+
+  public useName() {
+    return this.name;
+  }
+
+  public useCpf() {
+    return this.cpf;
+  }
+
+  public useBirthDate() {
+    return this.birthDate;
   }
 
   public getBalance() {
