@@ -1,0 +1,11 @@
+[
+  {
+    "id": "01th",
+    "name": "Mara Maravilha",
+    "email": "mara@gmail.com",
+    "specialties": [
+      "REACT",
+      "REDUX"
+    ]
+  }
+]
