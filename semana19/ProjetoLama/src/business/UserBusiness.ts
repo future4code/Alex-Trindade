@@ -5,6 +5,7 @@ import { IdGenerator } from "../services/IdGenerator";
 import { HashManager } from "../services/HashManager";
 import { Authenticator } from "../services/Authenticator";
 import { InvalidParameterError } from "../error/InvalidParameterError";
+import { NotFoundError } from "../error/NotFoundError";
 
 export class UserBusiness {
   constructor(
@@ -15,7 +16,7 @@ export class UserBusiness {
   ) {}
 
   async signup(user: UserInputDTO): Promise<string> {
-    if (!user.name || !user.email || !user.password || !user.role) {
+    if (!user) {
       throw new InvalidParameterError("Missing input");
     }
 
@@ -48,25 +49,30 @@ export class UserBusiness {
     return accessToken;
   }
 
-  async getUserByEmail(user: LoginInputDTO) {
-    const userDatabase = new UserDatabase();
-    const userFromDB = await userDatabase.getUserByEmail(user.email);
+  async getUserByEmail(input: LoginInputDTO): Promise<string> {
+    if (!input.email || !input.password) {
+      throw new InvalidParameterError("Missing input");
+    }
 
-    const hashManager = new HashManager();
-    const hashCompare = await hashManager.compare(
-      user.password,
-      userFromDB.getPassword()
+    const user = await this.userDatabase.getUserByEmail(input.email);
+
+    if (!user) {
+      throw new NotFoundError("User not found");
+    }
+
+    const hashCompare = await this.hashManager.compare(
+      input.password,
+      user.getPassword()
     );
 
-    const authenticator = new Authenticator();
-    const accessToken = authenticator.generateToken({
-      id: userFromDB.getId(),
-      role: userFromDB.getRole(),
-    });
-
     if (!hashCompare) {
-      throw new Error("Invalid Password!");
+      throw new InvalidParameterError("Invalid password");
     }
+
+    const accessToken = this.authenticator.generateToken({
+      id: user.getId(),
+      role: user.getRole(),
+    });
 
     return accessToken;
   }

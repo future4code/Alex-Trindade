@@ -36,16 +36,16 @@ export class UserController {
 
   async login(req: Request, res: Response) {
     try {
-      const loginData: LoginInputDTO = {
+      const input: LoginInputDTO = {
         email: req.body.email,
         password: req.body.password,
       };
 
-      const token = await UserController.UserBusiness.getUserByEmail(loginData);
+      const token = await UserController.UserBusiness.getUserByEmail(input);
 
       res.status(200).send({ token });
     } catch (error) {
-      res.status(400).send({ error: error.message });
+      res.status(error.errorCode || 400).send({ message: error.message });
     }
 
     await BaseDatabase.destroyConnection();
