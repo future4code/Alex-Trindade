@@ -2,6 +2,9 @@ import knex from "knex";
 import Knex from "knex";
 
 export abstract class BaseDatabase {
+  static destroyConnnection() {
+      throw new Error("Method not implemented.");
+  }
   private static connection: Knex | null = null;
 
   protected getConnection(): Knex {
