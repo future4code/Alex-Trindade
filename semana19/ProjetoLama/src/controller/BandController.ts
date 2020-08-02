@@ -30,7 +30,7 @@ export class BandController {
     } catch (error) {
       res.status(error.code || 400).send({ error: error.message });
     }
-    //await BaseDatabase.destroyConnection();
+    await BaseDatabase.destroyConnection();
   }
 
   public async getBandDetails(req: Request, res: Response) {
@@ -45,6 +45,6 @@ export class BandController {
       res.status(error.code || 400).send({ error: error.message });
     }
 
-    //await BaseDatabase.destroyConnection();
+    await BaseDatabase.destroyConnection();
   }
 }
