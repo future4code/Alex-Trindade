@@ -18,4 +18,18 @@ export class BandDatabase extends BaseDatabase {
       throw new Error(error.sqlMessage || error.message);
     }
   }
+
+  public async getBandDetails(parameter: string) {
+    try {
+      const result = await this.getConnection()
+        .select("*")
+        .from(BandDatabase.TABLE_NAME)
+        .where({ id: parameter })
+        .orWhere({ name: parameter });
+
+        return Band.toBandModel(result[0]);
+    } catch (error) {
+      throw new Error(error.sqlMessage || error.message);
+    }
+  }
 }

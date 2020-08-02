@@ -5,13 +5,14 @@ import { User, UserRole } from "../model/User";
 import { InvalidParameterError } from "../error/InvalidParameterError";
 import { BandDTO, Band } from "../model/Band";
 import { UnauthorizedError } from "../error/UnauthorizedError";
+import { NotFoundError } from "../error/NotFoundError";
 
 export class BandBusiness {
   registerBand(authorization: string, input: any) {
-      throw new Error("Method not implemented.");
+    throw new Error("Method not implemented.");
   }
   viewBandDetails(authorization: string, arg1: string) {
-      throw new Error("Method not implemented.");
+    throw new Error("Method not implemented.");
   }
   constructor(
     private bandDatabase: BandDatabase,
@@ -35,5 +36,16 @@ export class BandBusiness {
     await this.bandDatabase.createBand(
       new Band(id, input.name, input.genre, input.responsible)
     );
+  }
+
+  public async getBandDetails(token: string, parameter: string) {
+    this.authenticator.getData(token);
+    const band = await this.bandDatabase.getBandDetails(parameter);
+
+    if (!band) {
+      throw new NotFoundError("Band not found");
+    }
+
+    return band;
   }
 }

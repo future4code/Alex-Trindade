@@ -30,6 +30,21 @@ export class BandController {
     } catch (error) {
       res.status(error.code || 400).send({ error: error.message });
     }
-    await BaseDatabase.destroyConnection();
+    //await BaseDatabase.destroyConnection();
+  }
+
+  public async getBandDetails(req: Request, res: Response) {
+    try {
+      const result = await BandController.BandBusiness.getBandDetails(
+        req.headers.authorization,
+        req.query.parameter as string
+      );
+
+      res.status(200).send({ result });
+    } catch (error) {
+      res.status(error.code || 400).send({ error: error.message });
+    }
+
+    //await BaseDatabase.destroyConnection();
   }
 }
